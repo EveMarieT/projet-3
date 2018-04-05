@@ -16,7 +16,5 @@
 				<?php endforeach;?>
 			</section>	
 		</div>
-	</body>
-
 	<?php require('_footer.php');?>
 </html>
