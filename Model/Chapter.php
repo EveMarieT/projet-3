@@ -2,7 +2,7 @@
 // class Book
 require_once('Manager.php');
 
-class Chapter extends Manager
+class Chapter
 {
 	private $id;
 	private $picture;
