@@ -2,16 +2,28 @@
 
 require('Model/model.php');
 
-function listPosts()
+/*
+* comment class
+*
+*/
+class Controller
 {
-	$posts = getAllPosts();
-
-	require('View/accueilView.php');
-}
-
-function chapter()
-{
-	$chapter = getChapters($_GET['id']);
+	/*
+	* comment
+	*/
+	public function listPosts()
+	{
+		$posts = getAllPosts();
+		require('View/accueilView.php');
+	}
 	
-	require('View/chaptersView.php');
+	/*
+	* comment
+	*/
+	public function chapter()
+	{
+		$chapter = getChapters($_GET['id']);
+		require('View/chaptersView.php');
+	}
 }
+
