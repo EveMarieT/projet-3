@@ -25,6 +25,7 @@ switch ($action) {
 	case 'chapter':
 		if (isset($_GET['id']) && $_GET['id'] >0) {
 			$controller->chapterAction();
+			$controller->getComments();
 		} else {
 			$error = 1;
 		}
@@ -70,6 +71,11 @@ switch ($action) {
 			$error = 1;
 		}
 		break;
+
+	case 'update':
+		$controller->update();
+		break;
+
 
 	case 'contact':
 		$controller->getContact();

@@ -72,16 +72,33 @@ class Controller
 		$manager = new ChapterManager();
 		$manager->getAllPosts();
 	}
-	public function edit()
+	public function edit($id)
 	{
-				$manager = new ChapterManager();
-				$edit = $manager->editChapter($_GET['id']);
-
+		$manager = new ChapterManager();
+		$chapter = $manager->getChapters($id);
 		require('View/backend/edit.php');
 	}
+
+	public function update()
+	{
+		 $datas = $_POST[''];
+		 $manager = new ChapterManager();
+		 $manager->updateChapter($datas);
+
+	}
+
+
 	public function getContact()
 	{
 		require('View/contact.php');
+	}
+	public function getPost()
+	{
+		if (isset($_GET['id']) && $_GET['id'] > 0) {
+			$post = getPost($_GET['id']);
+			$comments = getComments($_GET['id']);
+		}
+		require('View/chapters.php');
 	}
 	public function get404()
 	{

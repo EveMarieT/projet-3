@@ -28,7 +28,7 @@ class ChapterManager extends Manager
 	public function getChapters($id)
 	{
 		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT id, picture, chapter_number, contents FROM novel WHERE id = :id');
+		$req = $db->prepare('SELECT id, picture, chapter_number, title, contents FROM novel WHERE id = :id');
 		$req->bindValue(':id', $id, PDO::PARAM_INT);
 		$req->execute();
 		$chapter = $req->fetch();
@@ -66,6 +66,23 @@ class ChapterManager extends Manager
 		$edit = $req;
 
 		return $req;
+	}
+	public function getPost($postsId)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('SELECT id, title, contents FROM novel WHERE id = ?');
+		$req->execute(array($postId));
+		$post = $req->fetch();
+
+		return $post;
+	}
+	public function getComments($postsId)
+	{
+		$db = $this->dbConnect();
+		$comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H/%min/%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
+		$comments->execute(array($postId));
+
+		return $comments;
 	}
 }
 

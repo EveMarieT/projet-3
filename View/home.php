@@ -4,8 +4,8 @@
 <div>
 	<section>
 		<?php foreach ($listPosts as $post):?>
-			<div class="bloc-resume">
-				<img class="polaroid" img src="<?= $post->getPicture();?>" alt="Alaska" title="<?= $post->getTitle();?>" />
+			<div id="bloc-resume" class="col-md-4">
+				<img class="polaroid" img src="<?= $post->getPicture();?>" class="img-rounded" alt="Alaska" title="<?= $post->getTitle();?>" />
 				<div class="chapitre">
 					<a href="index.php?action=chapter&id=<?= $post->getId();?>" class="button"><h3><?= $post->getTitle();?></h3></a>
 				</div>

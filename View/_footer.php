@@ -18,9 +18,11 @@
 				</div>
 				<div id="footerright">
 					<h4>Contactez moi</h4>
-						<p>Jean Forteroche<br>
-						25 rue de la poésie<br>
-						75011 PARIS</p>
+						<address>
+							<strong>Jean Forteroche</strong><br />
+							25 rue de la poésie<br />
+							75011 PARIS
+						</address>
 				</div>
 			</div>
 		</footer>
