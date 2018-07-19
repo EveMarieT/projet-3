@@ -4,7 +4,7 @@
 
 <h6>Modifier chapitre</h6>
 
-  <form action="index.php?action=update" method="post">
+  <form action="index.php?action=update&id=<?= $chapter['id'];?>" method="post">
      <input type="hidden" name="values[id]" value="<?= $chapter['id'];?>"/>
 
     N° du chapitre :
@@ -14,7 +14,7 @@
     <textarea name="values[contents]" rows="8" cols="45" value="" >
       <?= $chapter['contents'];?>
     </textarea>
-    <input type="submit" value="Valider">
+    <input type="submit" name="update" value="Valider">
   </form>
 
 

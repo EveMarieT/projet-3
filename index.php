@@ -3,7 +3,7 @@ session_start();
 ini_set('display_errors','on');
 error_reporting(E_ALL);
 
-require_once('Controller/controller.php');
+include_once('Controller/controller.php');
 
 // 3 roles pour le routeur:
 // - associer la request à un controlleur existant
@@ -57,7 +57,7 @@ switch ($action) {
 		break;
 
 	case 'addChapter':
-		$controller->addChapters();
+		$controller->addChapter();
 		break;
 
 	case 'allChapters':
@@ -76,6 +76,9 @@ switch ($action) {
 		$controller->update();
 		break;
 
+case 'delete':
+		$controller->delChapter();
+		break;
 
 	case 'contact':
 		$controller->getContact();

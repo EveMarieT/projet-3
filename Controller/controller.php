@@ -56,7 +56,7 @@ class Controller
 	{
 		require('View/backend/newChapter.php');
 	}
-	public function addChapters()
+	public function addChapter()
 	{
 		$title = $_POST['title'];
 		$chapter_number = $_POST['chapter_number'];
@@ -65,7 +65,7 @@ class Controller
 		$manager = new ChapterManager();
 		$manager->addChapter($title, $chapter_number, $contents);
 
-		require('View/backend/newChapter.php');
+		header('location:index.php?action=admin');
 	}
 	public function allChapters()
 	{
@@ -78,31 +78,22 @@ class Controller
 		$chapter = $manager->getChapters($id);
 		require('View/backend/edit.php');
 	}
-
 	public function update()
 	{
-		 $datas = $_POST[''];
-		 $manager = new ChapterManager();
-		 $manager->updateChapter($datas);
-
-	}
-
-
-	public function getContact()
-	{
-		require('View/contact.php');
-	}
-	public function getPost()
-	{
-		if (isset($_GET['id']) && $_GET['id'] > 0) {
-			$post = getPost($_GET['id']);
-			$comments = getComments($_GET['id']);
+		if(isset($_GET['id'])) {
+				$datas = $_GET['id'];
+				$manager = new ChapterManager();
+				$manager->updateChapter($datas);
 		}
-		require('View/chapters.php');
+		header('location:index.php?action=admin');
 	}
-	public function get404()
+	public function delChapter()
 	{
-		require('View/404.php');
+		if(isset($_GET['id'])) {
+			$del = $_GET['id'];
+			$manager = new ChapterManager();
+			$manager->delete($del);
+		}
+	header('location:index.php?action=admin');
 	}
-
 }

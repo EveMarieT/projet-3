@@ -12,8 +12,7 @@
     selector: 'textarea',
     width: 800,
     height: 300, });</script>
-  <title></title>
+  <title>Billet simple pour l'Alaska</title>
 </head>
-
 <body>
 

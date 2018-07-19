@@ -19,7 +19,7 @@
           <td><?= $article->getTitle();?><a href="index.php?action=chapter&id=<?= $article->getTitle();?>"></a></td>
           <td>
             <a href="index.php?action=edit&id=<?= $article->getId();?>">Modifier</a>
-            <a href="index.php?action=delete">Effacer</a>
+            <a href="index.php?action=delete&id=<?= $article->getId();?>">Effacer</a>
           </td>
         </tr>
 
