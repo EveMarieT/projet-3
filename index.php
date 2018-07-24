@@ -73,7 +73,11 @@ switch ($action) {
 		break;
 
 	case 'update':
-		$controller->update();
+		if(isset($_GET['id'])) {
+				$controller->update($_GET['id']);
+		} else {
+			$error = 1;
+		}
 		break;
 
 case 'delete':

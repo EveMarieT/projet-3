@@ -57,16 +57,16 @@ class ChapterManager extends Manager
 			$req->execute();
 		}
 
-	public function updateChapter($id)
+	public function updateChapter($id, $title, $chapter_number, $contents)
 		{
 			$db = $this->dbConnect();
-			$req = $db->prepare("UPDATE novel SET chapter_number='chapter_number', title='title', contents='contents' WHERE id='id'");
-
+			$query = "UPDATE novel SET chapter_number ='".$chapter_number."', title ='".$title."', contents ='".$contents."' WHERE id ='id'";
+			$req = $db->prepare($query);
 			if(isset($_GET['id'])) $req->bindValue(':id', $id, PDO::PARAM_INT);
-			$req->execute();
-			$edit = $req;
-
-			return $req;
+			$req->execute(array('chapter_number' => $chapter_number,
+													'title' 				 => $title,
+													'contents'			 => $contents));
+			var_dump($req); exit;
 		}
 	public function delete($id)
 	{

@@ -78,21 +78,25 @@ class Controller
 		$chapter = $manager->getChapters($id);
 		require('View/backend/edit.php');
 	}
-	public function update()
+	public function update($id, $title, $chapter_number, $contents)
 	{
 		if(isset($_GET['id'])) {
-				$datas = $_GET['id'];
+				$id = $_GET['id'];
+				$title = $_POST['title'];
+				$chapter_number = $_POST['chapter_number'];
+				$contents = $_POST['contents'];
+
 				$manager = new ChapterManager();
-				$manager->updateChapter($datas);
+				$manager->updateChapter($title, $chapter_number, $contents);
 		}
-		header('location:index.php?action=admin');
+		require('View/backend/update.php');
 	}
 	public function delChapter()
 	{
 		if(isset($_GET['id'])) {
-			$del = $_GET['id'];
-			$manager = new ChapterManager();
-			$manager->delete($del);
+				$del = $_GET['id'];
+				$manager = new ChapterManager();
+				$manager->delete($del);
 		}
 	header('location:index.php?action=admin');
 	}
