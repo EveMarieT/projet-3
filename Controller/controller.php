@@ -1,6 +1,7 @@
 <?php
 
 require_once('Model/ChapterManager.php');
+require_once('Model/CommentManager.php');
 
 class Controller
 {
@@ -12,10 +13,19 @@ class Controller
 		require('View/home.php');
 	}
 
-	public function chapterAction()
+	public function chapter()
 	{
+		$managerCm = new CommentManager();
+		if(isset($_POST['author'])) { // si et seulement quelqu'un laisse un commentaire depuis la page chapter
+			$post_id = $_GET['id'];
+			$author = $_POST['author'];
+			$comment = $_POST['comment'];
+			$newCom = $managerCm->addComment($post_id, $author, $comment);
+		}
 		$manager = new ChapterManager();
-		$chapterAction = $manager->getChapters($_GET['id']);
+		$chapter = $manager->getChapters($_GET['id']);
+
+		$comments = $managerCm->getComments($_GET['id']);
 		require('View/chapters.php');
 	}
 	public function connexionAdmin()
@@ -78,7 +88,7 @@ class Controller
 		$chapter = $manager->getChapters($id);
 		require('View/backend/edit.php');
 	}
-	public function update($id, $title, $chapter_number, $contents)
+	public function update()
 	{
 		if(isset($_GET['id'])) {
 				$id = $_GET['id'];
@@ -87,9 +97,9 @@ class Controller
 				$contents = $_POST['contents'];
 
 				$manager = new ChapterManager();
-				$manager->updateChapter($title, $chapter_number, $contents);
+				$manager->updateChapter($id,$title, $chapter_number, $contents);
 		}
-		require('View/backend/update.php');
+		header('location:index.php?action=admin');
 	}
 	public function delChapter()
 	{

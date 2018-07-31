@@ -11,7 +11,7 @@
     <input type="text" name="values[chapterNumber]" placeholder="Numéro" value="<?= $chapter['chapter_number'];?>"  />
     Titre du chapitre :
     <input type="text" name="values[title]" value="<?= $chapter['title'];?>" />
-    <textarea name="values[contents]" rows="8" cols="45" value="" >
+    <textarea id="textarea" name="values[contents]" rows="8" cols="45" value="" >
       <?= $chapter['contents'];?>
     </textarea>
     <input type="submit" name="update" value="Valider">

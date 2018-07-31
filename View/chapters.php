@@ -3,12 +3,12 @@
 
 <div class="contenu">
 	<div class="title">
-		<?php echo $chapterAction['chapter_number'];?>
+		<?php echo $chapter['chapter_number'];?> - <?= $chapter['title'];?>
 	</div>
-	<img class="picture" img src="<?= $chapterAction['picture'];?>" alt="Alaska" title="<?= $chapterAction['chapter_number'];?>" />
+	<img class="picture" img src="<?= $chapter['picture'];?>" alt="Alaska" title="<?= $chapter['chapter_number'];?>" />
 	<section>
 		<div class="story">
-			<p><?= $chapterAction['contents'];?></p>
+			<p><?= $chapter['contents'];?></p>
 		</div>
 	</section>
 </div>
@@ -25,6 +25,14 @@
     }
     ?>
   </div>
+
+<h3>Laissez un commentaire</h3>
+  <div class="letComment">
+    <form action="index.php?action=chapter&id=<?=$chapter['id'];?>" method="post">
+      Votre pseudo : <input type="text" name="author" placeholder="Votre pseudo"><br />
+      <textarea name="comment" placeholder="Votre commentaire"></textarea>
+      <input type="submit" value="Valider"/>
+    </form>
 
 <?php require('_footer.php');?>
 

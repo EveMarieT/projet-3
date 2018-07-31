@@ -7,7 +7,7 @@
 
     N° du chapitre : <input type="text" name="chapter_number" placeholder="Numéro"/>
     Titre du chapitre : <input type="text" name="title"/>
-    <textarea name="contents" rows="8" cols="45">Contenu :</textarea>
+    <textarea id="textarea" name="contents" rows="8" cols="45">Contenu :</textarea>
     <input type="submit" value="Valider">
   </form>
 

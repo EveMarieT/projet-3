@@ -62,10 +62,11 @@ class ChapterManager extends Manager
 			$db = $this->dbConnect();
 			$query = "UPDATE novel SET chapter_number ='chapter_number', title ='title', contents ='contents' WHERE id ='id'";
 			$req = $db->prepare($query);
-			if(isset($_GET['id'])) $req->bindValue(':id', $id, PDO::PARAM_INT);
-			$req->execute(array('chapter_number' => $chapter_number,
-													'title' 				 => $title,
-													'contents'			 => $contents));
+			$req->bindValue(':id', $id, PDO::PARAM_INT);
+			$req->bindValue(':chapter_number', $chapter_number, PDO::PARAM_STR);
+			$req->bindValue(':title', $title, PDO::PARAM_STR);
+			$req->bindValue(':contents', $contents, PDO::PARAM_STR);
+			$req->execute();
 		}
 	public function delete($id)
 	{
@@ -87,13 +88,6 @@ class ChapterManager extends Manager
 
 		return $post;
 	}
-	public function getComments($postsId)
-	{
-		$db = $this->dbConnect();
-		$comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H/%min/%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
-		$comments->execute(array($postId));
 
-		return $comments;
-	}
 }
 

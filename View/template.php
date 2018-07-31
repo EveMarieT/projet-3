@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
   <script>tinymce.init({
-    selector: 'textarea',
+    selector: 'textarea#textarea',
     width: 800,
     height: 300, });</script>
   <title>Billet simple pour l'Alaska</title>
