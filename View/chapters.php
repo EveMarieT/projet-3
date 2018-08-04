@@ -15,20 +15,16 @@
 
 <h2>Commentaires</h2>
   <div class="comments">
-    <?php
-    while ($comment = $comments->fetch())
-    {
-    ?>
+    <?php foreach ($comments as $comment):?>
+
       <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
       <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-    <?php
-    }
-    ?>
+   <?php endforeach;?>
   </div>
 
 <h3>Laissez un commentaire</h3>
   <div class="letComment">
-    <form action="index.php?action=chapter&id=<?=$chapter['id'];?>" method="post">
+    <form action="index.php?action=addCom&id=<?= $chapter['id'];?>" method="post">
       Votre pseudo : <input type="text" name="author" placeholder="Votre pseudo"><br />
       <textarea name="comment" placeholder="Votre commentaire"></textarea>
       <input type="submit" value="Valider"/>

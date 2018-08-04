@@ -8,10 +8,10 @@
      <input type="hidden" name="values[id]" value="<?= $chapter['id'];?>"/>
 
     N° du chapitre :
-    <input type="text" name="values[chapterNumber]" placeholder="Numéro" value="<?= $chapter['chapter_number'];?>"  />
+    <input type="text" name="chapter_number" placeholder="Numéro" value="<?= $chapter['chapter_number'];?>"  />
     Titre du chapitre :
-    <input type="text" name="values[title]" value="<?= $chapter['title'];?>" />
-    <textarea id="textarea" name="values[contents]" rows="8" cols="45" value="" >
+    <input type="text" name="title" value="<?= $chapter['title'];?>" />
+    <textarea id="textarea" name="contents" rows="8" cols="45" value="" >
       <?= $chapter['contents'];?>
     </textarea>
     <input type="submit" name="update" value="Valider">

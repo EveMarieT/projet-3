@@ -10,7 +10,7 @@
     <thead>
       <th>N°</th>
       <th>Titre</th>
-      <th/>
+      <th></th>
     </thead>
     <tbody>
       <?php foreach ($lastArticles as $article):?>

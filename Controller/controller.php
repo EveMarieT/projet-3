@@ -15,19 +15,25 @@ class Controller
 
 	public function chapter()
 	{
+		$manager = new ChapterManager();
+		$chapter = $manager->getChapters($_GET['id']);
+
 		$managerCm = new CommentManager();
-		if(isset($_POST['author'])) { // si et seulement quelqu'un laisse un commentaire depuis la page chapter
+		$comments = $managerCm->getComments($_GET['id']);
+		require('View/chapters.php');
+	}
+	public function addCom($post_id, $author, $comment)
+	{
+		$managerCm = new CommentManager();
+		if(isset($_POST['author'])) { // si et seulement si quelqu'un laisse un commentaire depuis la page chapter
 			$post_id = $_GET['id'];
 			$author = $_POST['author'];
 			$comment = $_POST['comment'];
 			$newCom = $managerCm->addComment($post_id, $author, $comment);
 		}
-		$manager = new ChapterManager();
-		$chapter = $manager->getChapters($_GET['id']);
-
-		$comments = $managerCm->getComments($_GET['id']);
-		require('View/chapters.php');
+		header('location:index.php?action=chapter&id='.$_GET['id']);
 	}
+
 	public function connexionAdmin()
 	{
 		require('View/connexionAdmin.php');
@@ -97,7 +103,7 @@ class Controller
 				$contents = $_POST['contents'];
 
 				$manager = new ChapterManager();
-				$manager->updateChapter($id,$title, $chapter_number, $contents);
+				$manager->updateChapter($id, $title, $chapter_number, $contents);
 		}
 		header('location:index.php?action=admin');
 	}

@@ -16,11 +16,10 @@ class CommentManager extends Manager
 
     return $req;
   }
-  public function addComment($post_id,$author, $comment)
+  public function addComment($post_id, $author, $comment)
   {
     $db = $this->dbConnect();
-    $query = "INSERT INTO comments SET post_id ='".$post_id."', author ='".$author."', comment ='".$comment."'";
-    $req = $db->prepare($query);
-    $req->execute();
+    $req = $db->prepare("INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())");
+    $newCom = $req->execute(array($post_id, $author, $comment));
   }
 }
