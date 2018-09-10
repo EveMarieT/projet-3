@@ -1,5 +1,5 @@
 <?php
-// class Book
+// class Chapter
 require_once('Manager.php');
 
 class Chapter
@@ -10,6 +10,28 @@ class Chapter
 	private $title;
 	private $contents;
 	private $date;
+
+
+	public function hydrate($episodes)
+	{
+		foreach ($episodes as $key => $episode)
+		{
+			$elements = explode('_',$key);
+			$new_key = '';
+
+			foreach ($elements as $el)
+			{
+				$new_key.= ucfirst($el);
+			}
+			$method = "set".$new_key;
+
+			if(is_callable(array($this, $method)))
+			{
+				$this->$method($episode);
+			}
+		}
+		return $this;
+	}
 
 	public function getId(){
 		return $this->id;
@@ -48,25 +70,6 @@ class Chapter
 		$this->date = $date;
 	}
 
-	public function hydrate($episodes)
-	{
-		foreach ($episodes as $key => $episode)
-		{
-			$elements = explode('_',$key);
-			$new_key = '';
 
-			foreach ($elements as $el)
-			{
-				$new_key.= ucfirst($el);
-			}
-			$method = "set".$new_key;
-
-			if(is_callable(array($this, $method)))
-			{
-				$this->$method($episode);
-			}
-		}
-		return $this;
-	}
 }
 

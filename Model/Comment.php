@@ -8,6 +8,8 @@ class Comment
   private $author;
   private $comment;
   private $comment_date;
+  private $alert;
+
   public function getId(){
     return $this->id;
   }
@@ -23,6 +25,9 @@ class Comment
   public function getCommentDate(){
     return $this->comment_date;
   }
+  public function getAlert(){
+    return $this->alert;
+  }
   public function setId($id){
     $this->id = $id;
   }
@@ -37,6 +42,9 @@ class Comment
   }
   public function setCommentDate($comment_date){
     $this->comment_date = $comment_date;
+  }
+  public function setAlert($alert){
+    $this->alert = $alert;
   }
   public function hydrate($comments)
   {

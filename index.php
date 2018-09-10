@@ -24,7 +24,7 @@ switch ($action) {
 
 	case 'chapter':
 		if (isset($_GET['id']) && $_GET['id'] >0)  {
-			$controller->chapter();
+			$controller->chapter(intval($_GET['id']));
 		} else {
 			$error = 1;
 		}
@@ -32,7 +32,7 @@ switch ($action) {
 
 	case 'addCom':
 		if(isset($_POST['author'])) {
-			$controller->addCom($_GET['id'], $_POST['author'], $_POST['comment']);
+			$controller->addCom((int)$_GET['id'], $_POST['author'], $_POST['comment']);
 		} else {
 			$error = 1;
 		}
@@ -67,10 +67,6 @@ switch ($action) {
 		$controller->addChapter();
 		break;
 
-	case 'allChapters':
-		$controller->listPosts();
-		break;
-
 	case 'edit':
 		if (isset($_GET['id'])) {
 			$controller->edit($_GET['id']);
@@ -93,6 +89,10 @@ case 'delete':
 
 	case 'contact':
 		$controller->getContact();
+		break;
+
+	case 'alert':
+		$controller->alertDone();
 		break;
 
 	default:

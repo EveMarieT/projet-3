@@ -16,10 +16,23 @@ class CommentManager extends Manager
 
     return $req;
   }
-  public function addComment($post_id, $author, $comment)
+
+  /**
+   * Ajoute un commentaire un bdd
+   * @param integer $post_id L'id de l'article d@php commentaire
+   * @param [type] $author  [description]
+   * @param [type] $comment [description]
+   */
+  public function addComment(int $post_id,string $author,string  $comment)
   {
     $db = $this->dbConnect();
     $req = $db->prepare("INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())");
     $newCom = $req->execute(array($post_id, $author, $comment));
+  }
+  public function alertCom($id)
+  {
+    $db = $this->dbConnect();
+    $req = $db->prepare("UPDATE comment SET alert=1 WHERE id = :id");
+    $req->execute(array($id));
   }
 }

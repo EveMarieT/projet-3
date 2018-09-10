@@ -18,8 +18,8 @@
           <td><?= $article->getChapterNumber();?></td>
           <td><?= $article->getTitle();?><a href="index.php?action=chapter&id=<?= $article->getTitle();?>"></a></td>
           <td>
-            <a href="index.php?action=edit&id=<?= $article->getId();?>">Modifier</a>
-            <a href="index.php?action=delete&id=<?= $article->getId();?>">Effacer</a>
+            <a href="index.php?action=edit&id=<?= $article->getId();?>">Modifier<img src="Assets/images/if_pen_1814074.png"></a>
+            <a href="index.php?action=delete&id=<?= $article->getId();?>">Effacer<img src="Assets/images/if_basket_1814090.png"></a>
           </td>
         </tr>
 

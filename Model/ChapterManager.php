@@ -7,7 +7,10 @@ require_once('Manager.php');
 
 class ChapterManager extends Manager
 {
-
+  /**
+   * [getAllPosts description]
+   * @return Chapter[]
+   */
 	public function getAllPosts()
 	{
 		$db = $this->dbConnect();
@@ -20,6 +23,7 @@ class ChapterManager extends Manager
 			$post->setChapterNumber($elements['chapter_number']);
 			$post->setTitle($elements['title']);
 			$post->setContents($elements['contents']);
+			//$post->hydrate($elements);
 			$posts[] = $post;
 		}
 		return $posts;
