@@ -74,7 +74,8 @@ class Controller
 	 * @param string $mdp 	mot de passe associé
 	 * @return void Redirige vers la page admin
 	 */
-  public function login() {
+  public function login()
+  {
   	if(isset($_POST['pseudo']) && isset($_POST['mdp'])) {
 	  	$pseudo = htmlspecialchars($_POST['pseudo']);
 			$mdp 		= htmlspecialchars($_POST['mdp']);
@@ -83,15 +84,16 @@ class Controller
 				$_SESSION['admin'] = true;
 				//$_SESSION['role']  = "admin";
 			}
-			header('location:index.php?action=admin');
 		}
+		header('location:index.php?action=admin');
   }
   /**
    * Permet la deconnexion de l'administrateur
    *
    * @return void Redirige vers la page d'accueil
    */
-  public function logout() {
+  public function logout()
+  {
   	session_unset();
 		header('location:index.php?action=listPosts');
   }
@@ -108,7 +110,6 @@ class Controller
 		$manager = new ChapterManager();
 		$lastArticles = $manager->getLastChapters();
 		// permet l'ajout d'un nouvel article
-
 		require('View/backend/admin.php');
 	}
 	/**
@@ -136,13 +137,27 @@ class Controller
 
 		header('location:index.php?action=admin');
 	}
-
+	/**
+	 * Permet d'afficher le chapitre d'id $id qui est à modifier
+	 *
+	 * @param  integer $id [correspond à l'id du chapitre]
+	 * @return [type]   Redirige vers la page de modification
+	 */
 	public function edit($id)
 	{
 		$manager = new ChapterManager();
 		$chapter = $manager->getChapters($id);
 		require('View/backend/edit.php');
 	}
+	/**
+	 * Permet de récupérer le chapitre d'id $id demandé
+	 * @param integer $id [correspond à l'id du chapitre demandé]
+	 * @param string $title [correspond au titre du chapitre demandé]
+	 * @param integer $chapter_number [correspond au numéro du chapitre demandé]
+	 * @param string $contents [correspond au contenu du chapitre demandé]
+	 *
+	 * @return void Redirige vers la page d'accueil de la partie admin du blog
+	 */
 	public function update()
 	{
 		if(isset($_GET['id'])) {
@@ -156,6 +171,12 @@ class Controller
 		}
 		header('location:index.php?action=admin');
 	}
+	/**
+	 * Permet de supprimer le chapitre selon l'id $id selectionné
+	 * @param integer $id [correspond à l'id du chapitre selectionné]
+	 *
+	 * @return void Redirige vers la page d'accueil de la partie admin du blog
+	 */
 	public function delChapter()
 	{
 		if(isset($_GET['id'])) {
@@ -163,15 +184,21 @@ class Controller
 				$manager = new ChapterManager();
 				$manager->delete($del);
 		}
-	header('location:index.php?action=admin');
+		header('location:index.php?action=admin');
 	}
+	/**
+	 * Permet de signaler à l'administrateur du blog les commentaires signalés
+	 *
+	 * @param integer $post_id [correpond à l'id $post_id du commentaire selectionné]
+	 * @return void Redirige vers la page du chapitre dont le commentaire est issu
+	 */
 	public function alertDone()
 	{
-		if(isset($_GET['aleert'])) {
+		if(isset($_GET['alert'])) {
 				$signal = $_GET['alert'];
 				$managerCm = new CommentManager();
 				$managerCm->alert($alert);
 		}
-	header('location:index.php?action=chapter');
+		header('location:index.php?action=chapter');
 	}
 }
