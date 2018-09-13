@@ -30,19 +30,7 @@
       <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
       <p><?= nl2br(htmlspecialchars($comment['comment'])) ?>
 
-      <button type="submit" name="signal" onClick="ConfirmMessage()">Signaler</button>
 
-      <script type="text/javascript">
-        function ConfirmMessage() {
-            if (confirm("Voulez-vous signaler ce commentaire ?")) {
-                alert("Oui")
-            }
-            else {
-                alert("Non")
-             }
-            }
-
-      </script>
       </p>
 
    <?php endforeach;?>

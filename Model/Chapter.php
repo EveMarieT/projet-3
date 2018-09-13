@@ -8,19 +8,38 @@ class Chapter
 {
 	/**
 	 * données utiles pour la création de chapitre
-	 * @var integer $id correspond à l'id du chapitre
-	 * @var string $picture correspond à l'image associé au chapitre
-	 * @var integer $chapter_number correspond au numéro du chapitre
-	 * @var string $title correspond au titre du chapitre
-	 * @var string $contents correspond au contenu du chapitre
-	 * @var date $date correspond à la date de publication du chapitre
+	 *
+	 *
+	 *
+	 *
+	 *
+	 *
 	 *
 	 */
+
+	/**
+	 * @var integer $id correspond à l'id du chapitre
+	 */
 	private $id;
+	/**
+	 * @var string $picture correspond à l'image associé au chapitre
+	 */
 	private $picture;
+	/**
+	 * @var integer $chapter_number correspond au numéro du chapitre
+	 */
 	private $chapter_number;
+	/**
+	 * @var string $title correspond au titre du chapitre
+	 */
 	private $title;
+	/**
+	 *  @var string $contents correspond au contenu du chapitre
+	 */
 	private $contents;
+	/**
+	 * @var date $date correspond à la date de publication du chapitre
+	 */
 	private $date;
 
 

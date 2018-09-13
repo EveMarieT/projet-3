@@ -12,7 +12,7 @@ class Controller
 	public function listPosts()
 	{
 		$manager = new ChapterManager();
-		$listPosts = $manager->getAllPosts();
+		$listPosts = $manager->getHomeChapters();
 		require('View/home.php');
 	}
 	/**
@@ -24,7 +24,7 @@ class Controller
 	public function chapter(int $id)
 	{
 		$manager = new ChapterManager();
-		$chapter = $manager->getChapters($id);
+		$chapter = $manager->getChapter($id);
 
 		$managerCm = new CommentManager();
 		$comments = $managerCm->getComments($id);
@@ -194,6 +194,12 @@ class Controller
 	 */
 	public function alertDone()
 	{
+    // 1. Il faut récupérer via l'url l'identifiant du commentaire à signaler
+    // 2. On récupère le commentaire associé à l'identifiant (manager : getComFromId($id))
+    // 3. On met à jour le nombre de signalement du commentaire (manager : updateComAlert($val))
+    // 4. Rediriger l'utilisateur vers la page du chapitre lié au commentaire
+
+
 		if(isset($_GET['alert'])) {
 				$signal = $_GET['alert'];
 				$managerCm = new CommentManager();

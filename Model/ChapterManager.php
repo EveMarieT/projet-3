@@ -4,17 +4,20 @@ error_reporting(E_ALL);
 
 include_once('Chapter.php');
 require_once('Manager.php');
-
+/**
+ * La class chapterManager permet d'appliquer les méthodes de la class Chapter
+ */
 class ChapterManager extends Manager
 {
+	const MAX_POST_IN_HOMEPAGE = 6;
   /**
-   * [getAllPosts description]
+   * La methode getAllPosts permet de récupérer les 6 premiers chapitres du roman
    * @return Chapter[]
    */
-	public function getAllPosts()
+	public function getHomeChapters()
 	{
 		$db = $this->dbConnect();
-		$req = $db->query('SELECT * FROM novel LIMIT 0, 6');
+		$req = $db->query('SELECT * FROM novel LIMIT 0, '.self::MAX_POST_IN_HOMEPAGE);
 		$data = $req->fetchAll();
 		foreach ($data as $elements) {
 			$post = new Chapter();
@@ -28,8 +31,12 @@ class ChapterManager extends Manager
 		}
 		return $posts;
 	}
-
-	public function getChapters($id)
+	/**
+	 * La méthode getChapter permet de récupérer le chapitre selon l'id
+	 * @param  integer $id correspond à l'id du chapitre selectionné
+	 * @return string   un tableau associatif du chapitre selectionné
+	 */
+	public function getChapter($id)
 	{
 		$db = $this->dbConnect();
 		$req = $db->prepare('SELECT id, picture, chapter_number, title, contents FROM novel WHERE id = :id');
@@ -39,6 +46,10 @@ class ChapterManager extends Manager
 
 		return $chapter;
 	}
+	/**
+	 * La méthode getAllChapters permet de récupérer tous les chapitres existants
+	 * @return string un tableau associatif des chapitres existants
+	 */
 	public function getLastChapters()
 	{
 		$db = $this->dbConnect(); // connexion à la bdd
@@ -53,6 +64,12 @@ class ChapterManager extends Manager
 		}
 		return $lastArticles;
 	}
+	/**
+	 * la méthode addChapter permet d'ajouter un nouveau chapitre
+	 * @param string $title          correspond au titre du nouveau chapitre
+	 * @param integer $chapter_number correpond au numéro du nouveau chapitre
+	 * @param string $contents       correspond au contenu du nouveau chapitre
+	 */
 		public function addChapter($title, $chapter_number, $contents)
 		{
 			$db = $this->dbConnect();
@@ -60,7 +77,14 @@ class ChapterManager extends Manager
 			$req = $db->prepare($query);
 			$req->execute();
 		}
-
+		/**
+		 * La fonction updateChapter permet de mettre à jour un chapitre existant
+		 * @param  integer $id             correspond à l'id du chapitre à mettre à jour
+		 * @param  string $title          correspond au titre du chapitre à mettre à jour
+		 * @param  integer $chapter_number correspond au numéro du chapitre à mettre à jour
+		 * @param  string $contents       correspond au contenu du chapitre à mettre à jour
+		 * @return string    un tableau associatif des éléments à mettre à jour
+		 */
 	public function updateChapter($id, $title, $chapter_number, $contents)
 		{
 			$db = $this->dbConnect();
@@ -72,6 +96,12 @@ class ChapterManager extends Manager
 			$req->bindValue(':contents', $contents, PDO::PARAM_STR);
 			$req->execute();
 		}
+	/**
+	 * La méthode delete permet d'effacer un chapitre selon son $id
+	 * @param  integer $id correspond à l'id du chapitre à effacer
+	 * @return void   supprime le chapitre selectionné
+	 *
+	 */
 	public function delete($id)
 	{
 		$bdd = $this->dbConnect();
