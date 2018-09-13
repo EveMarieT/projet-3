@@ -74,7 +74,7 @@ class Controller
 	 * @param string $mdp 	mot de passe associé
 	 * @return void Redirige vers la page admin
 	 */
-  public function login()
+  public function login(string $pseudo, string $mdp)
   {
   	if(isset($_POST['pseudo']) && isset($_POST['mdp'])) {
 	  	$pseudo = htmlspecialchars($_POST['pseudo']);
@@ -126,7 +126,7 @@ class Controller
 	 *
 	 * @return void Redirige vers la page d'accueil de l'admin du blog
 	 */
-	public function addChapter()
+	public function addChapter(string $title, int $chapter_number, string $contents)
 	{
 		$title = $_POST['title'];
 		$chapter_number = $_POST['chapter_number'];
@@ -158,7 +158,7 @@ class Controller
 	 *
 	 * @return void Redirige vers la page d'accueil de la partie admin du blog
 	 */
-	public function update()
+	public function update(int $id, string $title, int $chapter_number, string $contents)
 	{
 		if(isset($_GET['id'])) {
 				$id = $_GET['id'];
@@ -177,7 +177,7 @@ class Controller
 	 *
 	 * @return void Redirige vers la page d'accueil de la partie admin du blog
 	 */
-	public function delChapter()
+	public function delChapter(int $id)
 	{
 		if(isset($_GET['id'])) {
 				$del = $_GET['id'];
@@ -197,7 +197,7 @@ class Controller
 		if(isset($_GET['alert'])) {
 				$signal = $_GET['alert'];
 				$managerCm = new CommentManager();
-				$managerCm->alert($alert);
+				$managerCm->alert($signal);
 		}
 		header('location:index.php?action=chapter');
 	}
