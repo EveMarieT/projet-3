@@ -8,13 +8,7 @@ class Chapter
 {
 	/**
 	 * données utiles pour la création de chapitre
-	 *
-	 *
-	 *
-	 *
-	 *
-	 *
-	 *
+
 	 */
 
 	/**
@@ -45,18 +39,18 @@ class Chapter
 
 	public function hydrate($episodes)
 	{
-		foreach ($episodes as $key => $episode)
+		foreach ($episodes as $key => $episode) // Parcourir le tableau avec pour clé $key et pour valeur $episode
 		{
-			$elements = explode('_',$key);
+			$elements = explode('_',$key); // Couper la string avec des underscores
 			$new_key = '';
 
 			foreach ($elements as $el)
 			{
-				$new_key.= ucfirst($el);
+				$new_key.= ucfirst($el); // Concatener tous les éléments en majuscule
 			}
-			$method = "set".$new_key;
+			$method = "set".$new_key; // On crée la méthode avec le nom du setter correspondant à l'attribut
 
-			if(is_callable(array($this, $method)))
+			if(is_callable(array($this, $method))) // Si la méthode est appelable en variable
 			{
 				$this->$method($episode);
 			}
