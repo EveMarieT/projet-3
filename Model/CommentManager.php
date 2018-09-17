@@ -7,6 +7,11 @@ require_once('Manager.php');
 
 class CommentManager extends Manager
 {
+  /**
+   * Récupère les commentaires associé au chapitre
+   * @param  integer $postId correspond à l'id du chapitre
+   * @return          renvoie un tableau avec les éléments du commentaire
+   */
   public function getComments($postId)
   {
     $db = $this->dbConnect();
@@ -18,10 +23,10 @@ class CommentManager extends Manager
   }
 
   /**
-   * Ajoute un commentaire un bdd
-   * @param integer $post_id L'id de l'article d@php commentaire
-   * @param [type] $author  [description]
-   * @param [type] $comment [description]
+   * Ajoute un commentaire en bdd
+   * @param integer $post_id L'id de l'article du commentaire
+   * @param string $author  L'auteur du commentaire
+   * @param string $comment Le contenu du commentaire
    */
   public function addComment(int $post_id,string $author,string  $comment)
   {
@@ -29,6 +34,11 @@ class CommentManager extends Manager
     $req = $db->prepare("INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())");
     $newCom = $req->execute(array($post_id, $author, $comment));
   }
+  /**
+   * Signale le commentaire à l'administrateur
+   * @param  integer $id correspond à l'id du commentaire
+   * @return      renvoie un tableau du commentaire signalé
+   */
   public function alertCom($id)
   {
     $db = $this->dbConnect();

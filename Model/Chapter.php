@@ -46,7 +46,7 @@ class Chapter
 
 			foreach ($elements as $el)
 			{
-				$new_key.= ucfirst($el); // Concatener tous les éléments en majuscule
+				$new_key.= ucfirst($el); // Concatener tous les éléments en majuscule pour la première lettre du mot
 			}
 			$method = "set".$new_key; // On crée la méthode avec le nom du setter correspondant à l'attribut
 
