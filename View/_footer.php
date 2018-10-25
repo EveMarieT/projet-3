@@ -11,9 +11,9 @@
 				<div id="footermiddle">
 					<h4>Mes réseaux sociaux</h4>
 					<div id="icones">
-						<a href="#"><img src="Assets/images/facebook-logo.png" alt="facebook"><a/>
-						<a href="#"><img src="Assets/images/instagram-logo.png" alt="instagram"><a />
-						<a href="#"><img src="Assets/images/twitter-logo.png" alt="twitter"><a />
+						<a href="#"><img src="Assets/images/facebook-logo.png" alt="facebook"></a>
+						<a href="#"><img src="Assets/images/instagram-logo.png" alt="instagram"></a>
+						<a href="#"><img src="Assets/images/twitter-logo.png" alt="twitter"></a>
 					</div>
 				</div>
 				<div id="footerright">
@@ -26,8 +26,10 @@
 				</div>
 			</div>
 		</footer>
-
-
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="Assets/js/bootstrap.min.js"></script>
 
 	</body>
 </html>

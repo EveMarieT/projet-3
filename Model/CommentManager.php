@@ -8,7 +8,7 @@ require_once('Manager.php');
 class CommentManager extends Manager
 {
   /**
-   * Récupère les commentaires associé au chapitre
+   * Récupère les commentaires associés au chapitre
    * @param  integer $postId correspond à l'id du chapitre
    * @return          renvoie un tableau avec les éléments du commentaire
    */
@@ -37,12 +37,26 @@ class CommentManager extends Manager
   /**
    * Signale le commentaire à l'administrateur
    * @param  integer $id correspond à l'id du commentaire
-   * @return      renvoie un tableau du commentaire signalé
+   * @return array|boolean      renvoie le commentaire (sous forme de tableau) ou false
    */
-  public function alertCom($id)
+  public function getComFromId($id)
   {
     $db = $this->dbConnect();
-    $req = $db->prepare("UPDATE comment SET alert=1 WHERE id = :id");
-    $req->execute(array($id));
+    $req = $db->prepare("SELECT * FROM comments WHERE id = :id");
+    $req->execute(array('id' => $id));
+
+    return $req->fetch();
+  }
+  /**
+   * Ajoute la valeur du nombre de signalement du commentaire
+   * @param  int $id aidentifiant du commentaire
+   * @return  renvoie la valeur du nombre de signalement
+   */
+  public function updateComAlert($id)
+  {
+    $db = $this->dbConnect();
+    $req = $db->prepare("UPDATE comments SET alert= alert + 1 WHERE id= :id");
+
+    $req->execute(array('id' => $id));
   }
 }

@@ -11,7 +11,7 @@ class ChapterManager extends Manager
 {
 	const MAX_POST_IN_HOMEPAGE = 6;
   /**
-   * La methode getAllPosts permet de récupérer les 6 premiers chapitres du roman
+   * La methode getHomeChapters permet de récupérer les 6 premiers chapitres du roman
    * @return Chapter[]
    */
 	public function getHomeChapters()
@@ -35,6 +35,7 @@ class ChapterManager extends Manager
 	 * La méthode getChapter permet de récupérer le chapitre selon l'id
 	 * @param  integer $id correspond à l'id du chapitre selectionné
 	 * @return string   un tableau associatif du chapitre selectionné
+     * @throws Exception
 	 */
 	public function getChapter($id)
 	{
@@ -44,13 +45,17 @@ class ChapterManager extends Manager
 		$req->execute();
 		$chapter = $req->fetch();
 
+		if(!$chapter){
+		    throw new Exception("Ce chapitre n'existe pas");
+        }
+
 		return $chapter;
 	}
 	/**
 	 * La méthode getAllChapters permet de récupérer tous les chapitres existants
 	 * @return string un tableau associatif des chapitres existants
 	 */
-	public function getLastChapters()
+	public function getAllChapters()
 	{
 		$db = $this->dbConnect(); // connexion à la bdd
 		$req = $db->query('SELECT * FROM novel'); // récupérer tous les articles
@@ -88,7 +93,7 @@ class ChapterManager extends Manager
 	public function updateChapter($id, $title, $chapter_number, $contents)
 		{
 			$db = $this->dbConnect();
-			$query = "UPDATE novel SET chapter_number ='chapter_number', title ='title', contents ='contents' WHERE id ='id'";
+			$query = "UPDATE novel SET chapter_number = :chapter_number, title = :title, contents = :contents WHERE id = :id";
 			$req = $db->prepare($query);
 			$req->bindValue(':id', $id, PDO::PARAM_INT);
 			$req->bindValue(':chapter_number', $chapter_number, PDO::PARAM_STR);
@@ -112,16 +117,5 @@ class ChapterManager extends Manager
 
 		return $req;
 	}
-
-	public function getPost($postsId)
-	{
-		$db = $this->dbConnect();
-		$req = $db->prepare('SELECT id, title, contents FROM novel WHERE id = ?');
-		$req->execute(array($postId));
-		$post = $req->fetch();
-
-		return $post;
-	}
-
 }
 

@@ -10,8 +10,9 @@ class Comment
    * Données utiles pour la création de commentaire
    *
    */
+    const MIN_LENGHT = 10;
 
-  /**
+    /**
    * @var integer correspond à l'id du commentaire
    */
   private $id;

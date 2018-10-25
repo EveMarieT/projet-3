@@ -1,25 +1,24 @@
-
 <?php require('template.php'); ?>
-<?php require('_header.php');?>
+<?php require('_header.php'); ?>
 
+
+<?php if ($error = true) : ?>
+    <p class="error">Vérifier votre identifiant et votre mot de passe</p>
+<?php endif; ?>
 <form method="post" action="index.php?action=login">
-  <p>
-    <table>
-      <tr>
-        <td>Identifiant :</td>
-        <td><input type="text" placeholder="Votre identifiant" name="pseudo" <?php if(isset($pseudo)) { ?> value="<?=$pseudo ?>" <?php } ?>> <br /></td>
-      </tr>
+    <div class="form-group">
+        <label for="formLoginPseudo">Identifiant : </label>
+        <input id="formLoginPseudo" type="text" placeholder="Votre identifiant"
+               name="pseudo" <?php if (isset($pseudo)) { ?> value="<?= $pseudo ?>" <?php } ?>>
+    </div>
+    <div class="form-group">
+        <label for="formLoginMdp">Mot de passe : </label>
+        <input id="formLoginMdp" type="password" placeholder="Votre mot de passe"
+               name="mdp" <?php if (isset($mdp)) { ?> value="<?= $mdp ?>" <?php } ?>>
+    </div>
 
-      <tr>
-        <td>Mot de passe :</td>
-        <td><input type="password" placeholder="Votre mot de passe" name="mdp" <?php if(isset($mdp)) { ?> value="<?=$mdp ?>" <?php } ?>> <br /></td>
-      </tr>
-
-      <tr>
-        <td><input type="submit" name="connexion" value="Se connecter"></td>
-      </tr>
-    </table>
+    <button type="submit" class="btn btn-default">Se connecter</button>
 </form>
 
-<?php require('_footer.php');?>
+<?php require('_footer.php'); ?>
 

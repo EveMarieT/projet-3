@@ -29,11 +29,33 @@
 
       <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
       <p><?= nl2br(htmlspecialchars($comment['comment'])) ?>
+      <!-- Pour signaler mon commentaire
+            Quand l'utilisateur clique sur signaler
+            1/ un message de confirmation s'affiche
+            2/ l'utilisateur valide ou pas la confirmation
+            3 si la confirmation est validée on ajoute 1 à $alert
+          -->
+      <bouton class="btn btn-primary" data-toggle="modal" data-target="#signalModal" >Signaler</bouton>
+        <div class="modal fade" id="signalModal" tabindex="-1" role="dialog" aria-labelledby="signalModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <bouton type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</bouton>
+                <strong class="modal-title" id="signalModalLabel">Voulez-vous signaler ce commentaire ?</strong>
 
 
+              </div>
+              <div class="modal-body">
+                <a href="index.php?action=alert&id=<?= $comment['id'];?>" class="button">Signaler</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </p>
 
    <?php endforeach;?>
+
+
 
   </div>
 
