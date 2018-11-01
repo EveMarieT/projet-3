@@ -1,10 +1,21 @@
 <?php require('View/template.php'); ?>
-<?php require('View/_header.php'); ?>
+<?php require('View/_headerA.php'); ?>
 
 
-<?php if (isset($error)) : ?>
-    <p class="error"><?= $error ?></p>
+<?php if (isset($msg)) : ?>
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading"><?= $msg ?></h4>
+        <p>Votre nouveau mot de passe a bien été pris en compte,<br />
+            vous pouvez dès à présent vous connecter avec votre nouveau mot de passe </p>
+    </div>
+
 <?php endif; ?>
+<?php if (isset($error)) : ?>
+    <div class="alert alert-danger" role="alert">
+        <p class="error"><?= $error ?></p>
+    </div>
+<?php endif; ?>
+
 <form method="post" action="index.php?action=updatePassword">
     <div class="form-group">
         <label for="formLoginPseudo">Mot de passe actuel : </label>
@@ -26,4 +37,8 @@
 </form>
 
 <?php require('View/_footer.php'); ?>
+
+
+
+
 

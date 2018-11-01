@@ -290,6 +290,8 @@ class Controller
                     //        ---- mettre à jour mdp
                     $userManager->updateUserPassword($_SESSION['admin'], $newMdp);
 
+                    $msg = "Le changement de votre mot de passe est validé ";
+
                 }else{
 
                     $error = "Actuel mot de passe ou confirmation de mot de passe incorrect";
@@ -303,5 +305,10 @@ class Controller
             return;
         }
         require('View/backend/updatePassword.php');
+    }
+
+    public function getContact()
+    {
+        require('View/contact.php');
     }
 }
