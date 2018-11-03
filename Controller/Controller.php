@@ -172,16 +172,17 @@ class Controller
      */
     public function addChapter()
     {
-        $title = $_POST['title'];
         $chapter_number = $_POST['chapter_number'];
+        $title = $_POST['title'];
         $contents = $_POST['contents'];
 
+
         $manager = new ChapterManager();
-        $manager->addChapter($title, $chapter_number, $contents);
+        $manager->addChapter($chapter_number, $title, $contents);
 
         header('location:index.php?action=admin');
-    }
 
+    }
     /**
      * Permet d'afficher le chapitre d'id $id qui est à modifier
      *

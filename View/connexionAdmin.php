@@ -3,7 +3,9 @@
 
 
 <?php if ($error = true) : ?>
-    <p class="error">Vérifier votre identifiant et votre mot de passe</p>
+    <div class="alert alert-danger" role="alert">
+        <p class="error">Vérifier votre identifiant et votre mot de passe</p>
+    </div>
 <?php endif; ?>
 <form method="post" action="index.php?action=login">
     <div class="form-group">

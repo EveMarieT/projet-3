@@ -9,7 +9,7 @@ require_once('Manager.php');
  */
 class ChapterManager extends Manager
 {
-	const MAX_POST_IN_HOMEPAGE = 6;
+	const MAX_POST_IN_HOMEPAGE = 2;
   /**
    * La methode getHomeChapters permet de récupérer les 6 premiers chapitres du roman
    * @return Chapter[]
@@ -17,7 +17,7 @@ class ChapterManager extends Manager
 	public function getHomeChapters()
 	{
 		$db = $this->dbConnect();
-		$req = $db->query('SELECT * FROM novel LIMIT 0, '.self::MAX_POST_IN_HOMEPAGE);
+		$req = $db->query('SELECT * FROM novel ORDER BY RAND() LIMIT 0,'.self::MAX_POST_IN_HOMEPAGE);
 		$data = $req->fetchAll();
 		foreach ($data as $elements) {
 			$post = new Chapter();
@@ -51,6 +51,7 @@ class ChapterManager extends Manager
 
 		return $chapter;
 	}
+
 	/**
 	 * La méthode getAllChapters permet de récupérer tous les chapitres existants
 	 * @return string un tableau associatif des chapitres existants
@@ -74,14 +75,15 @@ class ChapterManager extends Manager
 	 * @param string $title          correspond au titre du nouveau chapitre
 	 * @param integer $chapter_number correpond au numéro du nouveau chapitre
 	 * @param string $contents       correspond au contenu du nouveau chapitre
+     * @param file $picture           correspond à la photo du nouveau chapitre
 	 */
-		public function addChapter($title, $chapter_number, $contents)
-		{
-			$db = $this->dbConnect();
-			$query = "INSERT INTO novel SET title ='".$title."', chapter_number ='".$chapter_number."', contents ='".$contents."'";
-			$req = $db->prepare($query);
-			$req->execute();
-		}
+    public function addChapter($chapter_number, $title, $contents)
+    {
+        $db = $this->dbConnect();
+        $query = "INSERT INTO novel SET chapter_number ='".$chapter_number."', title ='".$title."', contents ='".$contents."'";
+        $req = $db->prepare($query);
+        $req->execute();
+    }
 		/**
 		 * La fonction updateChapter permet de mettre à jour un chapitre existant
 		 * @param  integer $id             correspond à l'id du chapitre à mettre à jour
