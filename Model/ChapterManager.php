@@ -10,6 +10,7 @@ require_once('Manager.php');
 class ChapterManager extends Manager
 {
 	const MAX_POST_IN_HOMEPAGE = 2;
+	const MAX_POST_IN_ALLCHAPTERSPAGE = 3;
   /**
    * La methode getHomeChapters permet de récupérer les 6 premiers chapitres du roman
    * @return Chapter[]
@@ -61,13 +62,16 @@ class ChapterManager extends Manager
 		$db = $this->dbConnect(); // connexion à la bdd
 		$req = $db->query('SELECT * FROM novel'); // récupérer tous les articles
 		$data = $req->fetchAll();
-		foreach ($data as $elements){
-			$lastArticle = new Chapter();
-			$lastArticle->setId($elements['id']);
-			$lastArticle->setTitle($elements['title']);
-			$lastArticle->setChapterNumber($elements['chapter_number']);
-			$lastArticles[] = $lastArticle;
-		}
+		foreach ($data as $elements) {
+            $lastArticle = new Chapter();
+            $lastArticle->setId($elements['id']);
+            $lastArticle->setTitle($elements['title']);
+            $lastArticle->setChapterNumber($elements['chapter_number']);
+            $lastArticle->setContents($elements['contents']);
+            $lastArticle->setPicture($elements['picture']);
+            $lastArticles[] = $lastArticle;
+        }
+
 		return $lastArticles;
 	}
 	/**

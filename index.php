@@ -34,6 +34,10 @@ try{
             $controller->chapter(intval($_GET['id']));
             break;
 
+        case 'allChapters':
+            $controller->allChapters();
+            break;
+
         case 'addCom':
             $controller->addCom();
             break;
@@ -47,7 +51,7 @@ try{
             break;
 
         case 'admin':
-                $controller->adminEnter();
+            $controller->adminEnter();
             break;
 
         case 'logout':

@@ -37,6 +37,27 @@ class Controller
 
         require('View/chapters.php');
     }
+    public function allChapters()
+    {
+
+        $manager = new ChapterManager();
+        $chapters = $manager->getAllChapters();
+
+       require('View/allChapters.php');
+    }
+//    public function paging()
+//    {
+//       $manager = new ChapterManager();
+//       $paging = $manager->paging();
+//       $paging->rowCount();
+//       $allpages = ceil($paging/3);
+//       if (isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0) {
+//           $_GET['page'] = intval($_GET['page']);
+//           $currentPage = $_GET['page'];
+//       } else {
+//           $currentPage = 1;
+//       }
+//    }
 
     /**
      * Permet d'ajouter un commentaire ayant pour auteur $author et contenu $comment au chapitre d'id $id
@@ -50,7 +71,7 @@ class Controller
      */
     public function addCom()
     {
-        $post_id = (int)$_GET['id'];
+        $post_id = intval($_GET['id']);
 
         if (!isset($_POST['author']) || empty($_POST['author'])) throw new Exception("Vous devez saisir un pseudo");
         if (!isset($_POST['comment']) || strlen($_POST['comment']) < Comment::MIN_LENGHT) throw new Exception("Vous devez saisir un commentaire");

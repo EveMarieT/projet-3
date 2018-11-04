@@ -4,7 +4,7 @@
         <a class="nav-link active" href="index.php?action=listPosts">Accueil</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Chapitres</a>
+        <a class="nav-link" href="index.php?action=allChapters">Chapitres</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="index.php?action=contact">Contact</a>
