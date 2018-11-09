@@ -92,6 +92,16 @@ class Controller
         }
     }
 
+    public function delCom()
+    {
+        if (isset($_GET['id'])) {
+            $del = $_GET['id'];
+            $managerCm = new CommentManager();
+            $managerCm->delete($del);
+        }
+        header('location:index.php?action=admin');
+    }
+
     /**
      * Permet d'afficher la page de connexion pour le coté admin du blog
      *
@@ -332,5 +342,13 @@ class Controller
     public function getContact()
     {
         require('View/contact.php');
+    }
+
+    public function comments()
+    {
+            $managerCm = new CommentManager();
+            $allComments = $managerCm->getAllComments();
+
+        require('View/backend/comments.php');
     }
 }

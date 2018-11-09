@@ -42,6 +42,10 @@ try{
             $controller->addCom();
             break;
 
+        case 'delCom':
+            $controller->delCom($_GET['id']);
+            break;
+
         case 'connexion':
             $controller->connexionAdmin();
             break;
@@ -88,6 +92,10 @@ try{
 
         case 'updatePassword':
             $controller->updatePassword();
+            break;
+
+        case 'comments':
+            $controller->comments();
             break;
 
         default:

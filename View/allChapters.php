@@ -1,22 +1,26 @@
 <?php require('template.php'); ?>
 <?php require('_header.php');?>
 
-<div class="container-fluid">
-    <div class="row">
-        <?php foreach ($chapters as $chapter):?>
-        <div class="card-deck">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="<?= $chapter->getPicture();?>" class=" polaroid img-responsive img-rounded" alt="Alaska" title="<?= $chapter->getTitle();?>">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $chapter->getTitle();?></h5>
-                    <p class="card-text"><?= var_export(substr($chapter->getContents(),0,250), true);?></p>
-                    <a href="index.php?action=chapter&id=<?= $chapter->getId();?>" class="btn btn-primary">Lire la suite</a>
+<section class="allChapters">
+    <article>
+        <div class="container-fluid">
+            <div class="row">
+                <?php foreach ($chapters as $chapter):?>
+                <div class="card-deck col-sm-4">
+                    <div class="card style="width: 18rem;"">
+                    <img class="card-img-top" src="<?= $chapter->getPicture();?>" class="img-responsive" alt="Alaska" title="<?= $chapter->getTitle();?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $chapter->getTitle();?></h5>
+                        <p class="card-text"><?= var_export(substr($chapter->getContents(),0,250), true);?></p>
+                        <a href="index.php?action=chapter&id=<?= $chapter->getId();?>" class="btn btn-primary">Lire la suite</a>
+                    </div>
                 </div>
             </div>
             <?php endforeach;?>
         </div>
-    </div>
-</div>
+        </div>
+    </article>
+</section
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         <li class="page-item">
