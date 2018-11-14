@@ -14,7 +14,7 @@ class Controller
      * Permet d'afficher tous les chapitres existants
      * @return void affiche sur la page concernée l'ensemble des chapitres
      */
-    public function listPosts()
+    public function home()
     {
         $manager = new ChapterManager();
         $listPosts = $manager->getHomeChapters();
@@ -133,16 +133,15 @@ class Controller
     public function login()
     {
         $error = false;
-        if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
-            $pseudo = htmlspecialchars($_POST['pseudo']);
+        if (isset($_POST['name']) && isset($_POST['mdp'])) {
+            $name = htmlspecialchars($_POST['name']);
             $mdp = htmlspecialchars($_POST['mdp']);
-
             $userManager = new UserManager();
 
-            if ($userManager->checkLoginAndPassword($pseudo, $mdp)) {
+            if ($userManager->checkLoginAndPassword($name, $mdp)) {
 
                 // instancie la session
-                $_SESSION['admin'] = $pseudo;
+                $_SESSION['admin'] = $name;
                 //$_SESSION['role']  = "admin";
                 header('location:index.php?action=admin');
             } else {
@@ -162,7 +161,7 @@ class Controller
     public function logout()
     {
         session_unset();
-        header('location:index.php?action=listPosts');
+        header('location:index.php?action=homePage');
     }
 
     /**
@@ -274,7 +273,7 @@ class Controller
     /**
      * Permet de signaler à l'administrateur du blog les commentaires signalés
      *
-     * @param integer $post_id [correspond à l'id $post_id du commentaire selectionné]
+     * @param integer $post_id [correspond à l'id $post_id du commentaire selectionné
      * @return void Redirige vers la page du chapitre dont le commentaire est issu
      */
     public function alertDone()
@@ -299,7 +298,7 @@ class Controller
             }
         }
 
-        header('location:index.php?action=listPosts');
+        header('location:index.php?action=homePage');
     }
 
     public function updatePassword()

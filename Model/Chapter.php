@@ -57,6 +57,14 @@ class Chapter
 		}
 		return $this;
 	}
+
+//	public function __construct($id, $picture, $chapter_number, $title, $contents){
+//	    $this->id = $id;
+//	    $this->picture = $picture;
+//	    $this->chapterNumber = $chapter_number;
+//	    $this->title = $title;
+//	    $this->contents = $contents;
+//    }
 	/**
 	 * la fonction renvoie la valeur de l'attribut $id
 	 * @return integer retourne l'id du chapitre

@@ -22,12 +22,12 @@ include_once('Controller/Controller.php');
 $controller = new Controller();
 
 
-(isset($_GET['action'])) ? $action = $_GET['action'] : $action = "listPosts";
+(isset($_GET['action'])) ? $action = $_GET['action'] : $action = "homePage";
 
 try{
     switch ($action) {
-        case 'listPosts':
-            $controller->listPosts();
+        case 'homePage':
+            $controller->home();
             break;
 
         case 'chapter':

@@ -12,6 +12,19 @@ body {
     width: 100%;
 }
 
+#bandeau {
+    background: url('../images/glacier.jpg') no-repeat;
+    background-size: cover;
+    height: 250px;
+    border-radius: 15px;
+    padding-top: 5px;
+}
+
+.breadcrumb, .breadcrumb-item a {
+    background-color: transparent !important;
+    color: white;
+}
+
 .logo {
     height: 55px;
     width: 45px;

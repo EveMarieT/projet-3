@@ -15,7 +15,7 @@ class UserManager extends  Manager
     public function checkLoginAndPassword($name, $mdp)
     {
         // Récuperer l'utilisateur ayant pour nom $name
-        // Vérifier que $mdp est ok par rapport à $user['mdp'] (tip voir
+        // Vérifier que $mdp est ok par rapport à $user['mdp']
         // Retourner password_verify(.......)
         $user = $this->getUser($name);
         return password_verify($mdp, $user['password']);
@@ -49,5 +49,6 @@ class UserManager extends  Manager
         }
 
         return $user;
+
     }
 }

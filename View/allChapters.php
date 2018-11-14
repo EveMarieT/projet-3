@@ -2,12 +2,10 @@
 <?php require('_header.php');?>
 
 <section class="allChapters">
-    <article>
-        <div class="container-fluid">
-            <div class="row">
-                <?php foreach ($chapters as $chapter):?>
-                <div class="card-deck col-sm-4">
-                    <div class="card style="width: 18rem;"">
+    <div class="row">
+        <?php foreach ($chapters as $chapter):?>
+            <div class="card-deck col-sm-4">
+                <div class="card">
                     <img class="card-img-top" src="<?= $chapter->getPicture();?>" class="img-responsive" alt="Alaska" title="<?= $chapter->getTitle();?>">
                     <div class="card-body">
                         <h5 class="card-title"><?= $chapter->getTitle();?></h5>
@@ -16,15 +14,13 @@
                     </div>
                 </div>
             </div>
-            <?php endforeach;?>
-        </div>
-        </div>
-    </article>
+        <?php endforeach;?>
+    </div>
 </section
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
+            <a class="page-link" href="index.php?action=allChapters&page=<?= $page - 1;?>" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
                 <span class="sr-only">Previous</span>
             </a>
@@ -33,7 +29,7 @@
         <li class="page-item"><a class="page-link" href="index.php?action=allChapters&page=<?= $page + 1;?>">2</a></li>
         <li class="page-item"><a class="page-link" href="index.php?action=allChapters&page=<?= $page + 2;?>">3</a></li>
         <li class="page-item">
-            <a class="page-link" href="index.php?action=allChapters&page=<?= $page - 1;?>" aria-label="Next">
+            <a class="page-link" href="index.php?action=allChapters&page=<?= $page + 1;?>" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
                 <span class="sr-only">Next</span>
             </a>

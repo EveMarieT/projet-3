@@ -22,12 +22,13 @@ class ChapterManager extends Manager
 		$data = $req->fetchAll();
 		foreach ($data as $elements) {
 			$post = new Chapter();
+
 			$post->setId($elements['id']);
 			$post->setPicture($elements['picture']);
 			$post->setChapterNumber($elements['chapter_number']);
 			$post->setTitle($elements['title']);
 			$post->setContents($elements['contents']);
-			//$post->hydrate($elements);
+//			$post->hydrate($episodes);
 			$posts[] = $post;
 		}
 		return $posts;

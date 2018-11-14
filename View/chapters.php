@@ -5,12 +5,12 @@
     <div class="title">
         <input class="form-control form-control-lg-success" type="text" placeholder="<?= $chapter['chapter_number'];?> - <?= $chapter['title'];?>">
     </div>
-    <img src="<?= $chapter['picture'];?>" class="rounded float-left"  alt="Alaska" title="<?= $chapter['chapter_number'];?>" />
-    <section>class="
+    <img src="<?= $chapter['picture'];?>" class="rounded float-left"  alt="Alaska" title="<?= $chapter['title'];?>" />
+    <article>
         <div class="story">
             <p><?= $chapter['contents'];?></p>
         </div>
-    </section>
+    </article>
 </div>
 
 <section id="comment" class="letComment">
@@ -19,11 +19,11 @@
         <form class="dropdown-menu p-4">
             <div class="form-group">
                 <label for="pseudo">Votre pseudo</label>
-                <input type="text" class="form-control" id="pseudo" placeholder="votre pseudo" required="required">
+                <input type="text" class="form-control" id="pseudo" name="author" placeholder="votre pseudo" required="required">
             </div>
             <div class="form-group">
                 <label for="comment">Votre commentaire</label>
-                <textarea class="form-control" id="comment" rows="3" placeholder="Votre commentaire" required="required"></textarea>
+                <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Votre commentaire" required="required"></textarea>
             </div>
             <button type="submit" class="btn btn-primary" value="Valider" name="submit_com">Valider</button>
         </form>
