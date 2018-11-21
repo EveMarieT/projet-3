@@ -15,10 +15,7 @@ class Chapter
 	 * @var integer $id correspond à l'id du chapitre
 	 */
 	private $id;
-	/**
-	 * @var string $picture correspond à l'image associé au chapitre
-	 */
-	private $picture;
+
 	/**
 	 * @var integer $chapter_number correspond au numéro du chapitre
 	 */
@@ -35,6 +32,12 @@ class Chapter
 	 * @var date $date correspond à la date de publication du chapitre
 	 */
 	private $date;
+    /**
+     * @var string $picture correspond à l'image associé au chapitre
+     */
+    private $picture;
+
+
 
 
 	public function hydrate($episodes)
@@ -52,19 +55,13 @@ class Chapter
 
 			if(is_callable(array($this, $method))) // Si la méthode est appelable en variable
 			{
-				$this->$method($episode);
+				$this->$method($episodes);
 			}
 		}
 		return $this;
 	}
 
-//	public function __construct($id, $picture, $chapter_number, $title, $contents){
-//	    $this->id = $id;
-//	    $this->picture = $picture;
-//	    $this->chapterNumber = $chapter_number;
-//	    $this->title = $title;
-//	    $this->contents = $contents;
-//    }
+//
 	/**
 	 * la fonction renvoie la valeur de l'attribut $id
 	 * @return integer retourne l'id du chapitre

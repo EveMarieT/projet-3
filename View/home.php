@@ -11,7 +11,7 @@
                              alt="Alaska" title="<?= $post->getTitle(); ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= $post->getTitle(); ?></h5>
-                            <p class="card-text"><?= var_export(substr($post->getContents(), 0, 250), true); ?></p>
+                            <p class="card-text"><?= substr($post->getContents(), 0, 250); ?></p>
                             <a href="index.php?action=chapter&id=<?= $post->getId(); ?>" class="btn btn-primary">Lire la
                                 suite</a>
                         </div>

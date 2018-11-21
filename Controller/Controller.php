@@ -39,25 +39,21 @@ class Controller
     }
     public function allChapters()
     {
-
         $manager = new ChapterManager();
-        $chapters = $manager->getAllChapters();
+        $nbOfChapters = $manager->countAll();
+        $nbOfPages = ceil($nbOfChapters/ChapterManager::MAX_POST_IN_CHAPTERSPAGE);
+
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else{
+            $page = $_GET['page'];
+        }
+
+        $chapters = $manager->paging($page);
 
        require('View/allChapters.php');
     }
-//    public function paging()
-//    {
-//       $manager = new ChapterManager();
-//       $paging = $manager->paging();
-//       $paging->rowCount();
-//       $allpages = ceil($paging/3);
-//       if (isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0) {
-//           $_GET['page'] = intval($_GET['page']);
-//           $currentPage = $_GET['page'];
-//       } else {
-//           $currentPage = 1;
-//       }
-//    }
+
 
     /**
      * Permet d'ajouter un commentaire ayant pour auteur $author et contenu $comment au chapitre d'id $id
@@ -205,10 +201,11 @@ class Controller
         $chapter_number = $_POST['chapter_number'];
         $title = $_POST['title'];
         $contents = $_POST['contents'];
+        $picture = $_POST['picture'];
 
 
         $manager = new ChapterManager();
-        $manager->addChapter($chapter_number, $title, $contents);
+        $manager->addChapter($chapter_number, $title, $contents, $picture);
 
         header('location:index.php?action=admin');
 
