@@ -4,7 +4,7 @@ body {
     background-color: #FFFBD4;
 }
 
-.header {
+.header{
     background: url('../images/globe.jpg') no-repeat;
     background-size: cover;
     border-radius: 15px;
@@ -12,17 +12,20 @@ body {
     width: 100%;
 }
 
-#bandeau {
+.headerA, #bandeau {
     background: url('../images/glacier.jpg') no-repeat;
     background-size: cover;
-    height: 250px;
+    max-height: 300px;
+    width: 100%;
     border-radius: 15px;
     padding-top: 5px;
 }
 
 .breadcrumb, .breadcrumb-item a {
     background-color: transparent !important;
+    font-family: "American Typewriter", serif;
     color: white;
+    font-size: 1em;
 }
 
 .logo {

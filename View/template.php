@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="Assets/css/style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Clicker+Script|Open+Sans" rel="stylesheet">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script src="Assets/js/tinymce/tinymce.min.js"></script>
+<!--    <script src="Assets/js/tinymce/tinymce.min.js"></script>-->
     <script>tinymce.init({
             selector: 'textarea#textarea',
+
             width: 800,
             height: 300, });</script>
     <title>Billet simple pour l'Alaska</title>

@@ -1,7 +1,13 @@
 <?php require_once ('View/template.php');?>
 <?php require_once ('View/_headerA.php');?>
 
-<h5>Tableau de bord</h5>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Tableau de bord -
+            <?php if(date('G') >= 0 && date('G') < 18) { echo 'Bonjour ' .$_SESSION['admin'];
+            } else { echo 'Bonsoir ' .$_SESSION['admin']; } ?></li>
+    </ol>
+</nav>
 
 <!-- afficher les commentaires -->
 

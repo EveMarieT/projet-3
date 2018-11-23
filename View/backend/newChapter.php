@@ -12,7 +12,7 @@
     <br />
     <br />
     <label>Ajout photo :</label>
-    <label for="picture">Lien de l'image: doit être de type public/img/posts/img-post-x.jpg ; x étant un chiffre</label>
+    <label for="picture">Lien de l'image: doit être de type Assets/imges/alaska_chpx.jpg ; x étant un chiffre</label>
     <input type="text" class="form-control" name="picture">
 
     <br />

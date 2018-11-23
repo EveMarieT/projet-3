@@ -37,11 +37,11 @@
 
         <dt class="col-sm-3"><p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p></dt>
         <dd class="col-sm-9">
-            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?><p/>
+            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
         </dd>
-        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#signalModal" >Signaler</button>
+        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#signalModal<?= $comment['id']; ?>" >Signaler</button>
 
-        <div class="modal fade" id="signalModal" tabindex="-1" role="dialog" aria-labelledby="signalModalLabel" aria-hidden="true">
+        <div class="modal fade" id="signalModal<?= $comment['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="signalModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

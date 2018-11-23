@@ -1,8 +1,7 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="index.php?action=homePage">Billet simple pour l'Alaska</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -18,7 +17,11 @@
                 <a class="nav-link" href="index.php?action=contact">Contact</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.php?action=connexion">Connexion</a>
+                <?php if (isset($_SESSION['admin'])) : ?>
+                    <a class="nav-link" href="index.php?action=admin">Administration</a>
+                <?php else: ?>
+                    <a class="nav-link" href="index.php?action=connexion">Connexion</a>
+                <?php endif; ?>
             </li>
         </ul>
 

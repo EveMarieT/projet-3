@@ -38,14 +38,20 @@ class Chapter
     private $picture;
 
 
-
-
-	public function hydrate($episodes)
+    /**
+     *
+     * Hydrate est une fonction qui prend un tableau associatif (clé/valeur),
+     * parcours ce tableau et appelle le setter associé à une "clé" s'il existe avec la "valeur" en parametre
+     * @param $data
+     * @return $this
+     */
+	public function hydrate(array $data)
 	{
-		foreach ($episodes as $key => $episode) // Parcourir le tableau avec pour clé $key et pour valeur $episode
+		foreach ($data as $key => $episode) // Parcourir le tableau avec pour clé $key et pour valeur $episode
 		{
 			$elements = explode('_',$key); // Couper la string avec des underscores
 			$new_key = '';
+
 
 			foreach ($elements as $el)
 			{
@@ -55,7 +61,7 @@ class Chapter
 
 			if(is_callable(array($this, $method))) // Si la méthode est appelable en variable
 			{
-				$this->$method($episodes);
+				$this->$method($episode);
 			}
 		}
 		return $this;

@@ -76,7 +76,7 @@ class CommentManager extends Manager
   public function updateComAlert($id)
   {
     $db = $this->dbConnect();
-    $req = $db->prepare("UPDATE comments SET alert= alert + 1 WHERE id= :id");
+    $req = $db->prepare("UPDATE comments SET alert = alert + 1 WHERE id= :id");
 
     $req->execute(array('id' => $id));
   }

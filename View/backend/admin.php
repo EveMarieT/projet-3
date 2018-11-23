@@ -1,7 +1,13 @@
 <?php require_once ('View/template.php');?>
 <?php require_once ('View/_headerA.php');?>
 
-<h5>Tableau de bord</h5>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Tableau de bord -
+            <?php if(date('G') >= 0 && date('G') < 18) { echo 'Bonjour ' .$_SESSION['admin'];
+                    } else { echo 'Bonsoir ' .$_SESSION['admin']; } ?></li>
+    </ol>
+</nav>
 
 <!-- afficher les titres des chapitres -->
 
@@ -20,7 +26,7 @@
             <?php foreach ($lastArticles as $article):?>
                 <tr>
                     <th scope="row"><?= $article->getChapterNumber();?></th>
-                    <td><?= $article->getTitle();?><a href="index.php?action=chapter&id=<?= $article->getTitle();?>"></a></td>
+                    <td><a href="index.php?action=chapter&id=<?= $article->getId();?>"><?= $article->getTitle();?></a></td>
                     <td><a href="index.php?action=edit&id=<?= $article->getId();?>">Modifier<img src="Assets/images/if_pen_1814074.png"></a></td>
                     <td><a href="index.php?action=delete&id=<?= $article->getId();?>" data-toggle="modal" data-target="#deleteModal">Effacer<img src="Assets/images/if_basket_1814090.png"></a>
 

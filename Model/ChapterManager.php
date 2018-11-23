@@ -24,16 +24,10 @@ class ChapterManager extends Manager
         $data = $req->fetchAll();
         foreach ($data as $elements) {
             $post = new Chapter();
-//            $post->setId($elements['id']);
-//            $post->setPicture($elements['picture']);
-//            $post->setChapterNumber($elements['chapter_number']);
-//            $post->setTitle($elements['title']);
-//            $post->setContents($elements['contents']);
-            $post->hydrate($elements);
-//            $posts[] = $post;
+            $posts[] = $post->hydrate($elements);
 
         }
-
+            return $posts;
     }
 
 
@@ -69,12 +63,7 @@ class ChapterManager extends Manager
         $data = $req->fetchAll();
         foreach ($data as $elements) {
             $lastArticle = new Chapter();
-            $lastArticle->setId($elements['id']);
-            $lastArticle->setTitle($elements['title']);
-            $lastArticle->setChapterNumber($elements['chapter_number']);
-            $lastArticle->setContents($elements['contents']);
-            $lastArticle->setPicture($elements['picture']);
-            $lastArticles[] = $lastArticle;
+            $lastArticles[] = $lastArticle->hydrate($elements);
         }
 
         return $lastArticles;

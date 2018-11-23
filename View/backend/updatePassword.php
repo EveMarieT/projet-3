@@ -33,7 +33,7 @@
                name="confirmedNewPassword">
     </div>
 
-    <button type="submit" class="btn btn-default">Valider</button>
+    <button type="submit" class="btn btn-info">Valider</button>
 </form>
 
 <?php require('View/_footer.php'); ?>

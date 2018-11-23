@@ -18,7 +18,7 @@
     </div>
 </section
 <nav>
-    <ul class="pagination">
+    <ul class="pagination justify-content-center">
         <?php for($i = 1; $i <= $nbOfPages ; $i++) : ?>
         <li class="page-item"><a class="page-link" href="index.php?action=allChapters&page=<?= $i ?>"><?= $i ?></a></li>
         <?php endfor; ?>
