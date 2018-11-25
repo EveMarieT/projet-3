@@ -24,7 +24,7 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($allComments as $comment):?>
+            <?php foreach ($comments as $comment):?>
                 <tr>
                     <th scope="row"><?= $comment->getPostId();?></th>
                     <td><?= $comment->getAuthor();?></td>

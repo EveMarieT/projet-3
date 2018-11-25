@@ -343,7 +343,7 @@ class Controller
     public function comments()
     {
             $managerCm = new CommentManager();
-            $allComments = $managerCm->getAllComments();
+            $comments = $managerCm->getAllComments();
 
         require('View/backend/comments.php');
     }

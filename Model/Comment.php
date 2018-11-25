@@ -37,6 +37,25 @@ class Comment
    */
   private $alert;
 
+    public function hydrate($comments)
+    {
+        foreach ($comments as $key => $comment) // Parcourir le tableau avec pour clé $key et pour valeur $comment
+        {
+            $elements = explode('_',$key); // Couper la string avec des underscores
+            $new_key = '';
+            foreach ($elements as $el)
+            {
+                $new_key.= ucfirst($el); // Concatener tous les éléments avec une majuscule la première lettre du mot
+            }
+            $method = "set".$new_key; // On crée la méthode avec le nom du setter correspondant à l'attribut
+            if(is_callable(array($this, $method))) // Si la méthode est appelable en variable on execute la méthode
+            {
+                $this->$method($comment);
+            }
+        }
+        return $this;
+    }
+
   /**
    * La fonction renvoie la valeur de l'attribut $id
    * @return integer retourne l'id du commentaire
@@ -125,22 +144,5 @@ class Comment
    * La fonction hydrate permet d'assigner aux attributs automatiquement les valeurs correspondantes
    *
    */
-  public function hydrate($comments)
-  {
-    foreach ($comments as $key => $comment) // Parcourir le tableau avec pour clé $key et pour valeur $comment
-    {
-      $elements = explode('_',$key); // Couper la string avec des underscores
-      $new_key = '';
-    foreach ($elements as $el)
-    {
-      $new_key.= ucfirst($el); // Concatener tous les éléments avec une majuscule la première lettre du mot
-    }
-    $method = "set".$new_key; // On crée la méthode avec le nom du setter correspondant à l'attribut
-    if(is_callable(array($this, $method))) // Si la méthode est appelable en variable on execute la méthode
-    {
-      $this->method($comments);
-    }
-  }
-  return $this;
-  }
+
 }

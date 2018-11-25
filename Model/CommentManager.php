@@ -25,22 +25,14 @@ class CommentManager extends Manager
     public function getAllComments()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT * FROM comments');
+        $req = $db->query('SELECT * FROM comments ORDER BY alert DESC, id DESC');
         $data = $req->fetchAll();
-        $allComments = [];
         foreach ($data as $elements) {
             $comment = new Comment();
-            $comment->setId($elements['id']);
-            $comment->setPostId($elements['post_id']);
-            $comment->setAuthor($elements['author']);
-            $comment->setComment($elements['comment']);
-            $comment->setCommentDate($elements['comment_date']);
-            $comment->setAlert($elements['alert']);
-            $allComments[] = $comment;
+            $comments[] = $comment->hydrate($elements);
         }
 
-        return $allComments;
-
+        return $comments;
     }
 
   /**
