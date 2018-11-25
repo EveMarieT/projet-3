@@ -5,15 +5,14 @@
 <br />
 <form action="index.php?action=addChapter" method="post">
 
-    <label> N° du chapitre :</label>
-    <input type="text" name="chapter_number" placeholder="Numéro"/>
-    <label>Titre du chapitre :</label>
-    <input type="text" name="title" />
+    <label> N° du chapitre :</label><br />
+    <input type="text" name="chapter_number" placeholder="Numéro"/><br />
+    <label>Titre du chapitre :</label><br />
+    <input type="text" class="col-md-4" name="title" />
     <br />
     <br />
-    <label>Ajout photo :</label>
-    <label for="picture">Lien de l'image: doit être de type Assets/imges/alaska_chpx.jpg ; x étant un chiffre</label>
-    <input type="text" class="form-control" name="picture">
+    <label>Ajout photo :</label><br />
+    <input type="text" class="form-control col-md-6" name="picture">
 
     <br />
     <br />

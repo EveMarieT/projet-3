@@ -2,21 +2,32 @@
 <?php require_once ('View/_headerA.php');?>
 
 
-<input class="form-control form-control-lg-success" type="text" placeholder="Modifier chapitre">
-<br />
-<form action="index.php?action=update&id=<?= $chapter['id'];?>" method="post">
-    <input type="hidden" name="values[id]" value="<?= $chapter['id'];?>"/>
+<h6>Modifier chapitre</h6>
 
-    N° du chapitre :
-    <input type="text" name="chapter_number" placeholder="Numéro" value="<?= $chapter['chapter_number'];?>"  />
-    Titre du chapitre :
-    <input type="text" name="title" value="<?= $chapter['title'];?>" />
-    <br />
-    <br />
-    <textarea id="textarea" name="contents" rows="8" cols="45" value="" >
-      <?= $chapter['contents'];?>
+<form action="index.php?action=update&id=<?= $chapter['id']; ?>" method="post">
+
+    <input type="hidden" name="values[id]" value="<?= $chapter['id']; ?>"/>
+    <div class="form-group">
+        <label for="text">N° du chapitre : </label><br/>
+        <input type="text" class="text-center col-md-1" name="chapter_number" placeholder="Numéro"
+               value="<?= $chapter['chapter_number']; ?>"/><br/>
+    </div>
+    <div class="form-group">
+        <label for="text">Titre du chapitre : </label><br/>
+        <input type="text" class="col-md-4" name="title" value="<?= $chapter['title']; ?>"/><br/>
+    </div>
+    <div class="form-group">
+        <label for="text">Modifier la photo :</label>
+        <input type="text" class="form-control col-md-6" name="picture">
+    </div>
+    <br/>
+    <div class="form-group">
+        <label for="textarea">Contenu : </label>
+        <textarea id="textarea" name="contents" rows="8" cols="45" value="">
+          <?= $chapter['contents']; ?>
     </textarea>
-    <br />
+    </div>
+
     <input class="btn btn-info" type="submit" value="Valider">
 </form>
 

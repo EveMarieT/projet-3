@@ -10,6 +10,7 @@ body {
     border-radius: 15px;
     max-height: 300px;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .headerA, #bandeau {
@@ -19,6 +20,7 @@ body {
     width: 100%;
     border-radius: 15px;
     padding-top: 5px;
+    margin-bottom: 10px;
 }
 
 .breadcrumb, .breadcrumb-item a {
@@ -86,6 +88,8 @@ footer {
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+
 
 
 
