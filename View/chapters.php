@@ -5,7 +5,7 @@
     <div class="title">
         <input class="form-control form-control-lg-success" type="text" placeholder="<?= $chapter['chapter_number'];?> - <?= $chapter['title'];?>">
     </div>
-    <img src="<?= $chapter['picture'];?>" class="rounded float-left"  alt="Alaska" title="<?= $chapter['title'];?>" />
+    <img src="<?= $chapter['picture'];?>" class="img-thumbnail rounded float-left"  alt="Responsive image" title="<?= $chapter['title'];?>" />
     <article>
         <div class="story">
             <p><?= $chapter['contents'];?></p>

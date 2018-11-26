@@ -89,6 +89,13 @@ footer {
     margin-bottom: 15px;
 }
 
+.img-thumbnail {
+    max-width: 500px !important;
+}
+
+.form-control {
+    margin-bottom: 10px;
+}
 
 
 
