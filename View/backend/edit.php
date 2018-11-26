@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
         <label for="text">Modifier la photo :</label>
-        <input type="text" class="form-control col-md-6" name="picture">
+        <input type="text" class="form-control col-md-6" name="picture" value="<?= $chapter['picture'];?>">
     </div>
     <br/>
     <div class="form-group">

@@ -150,12 +150,7 @@ class ChapterManager extends Manager
         $data = $req->fetchAll();
         foreach ($data as $elements) {
             $chapter = new Chapter();
-            $chapter->setId($elements['id']);
-            $chapter->setTitle($elements['title']);
-            $chapter->setChapterNumber($elements['chapter_number']);
-            $chapter->setContents($elements['contents']);
-            $chapter->setPicture($elements['picture']);
-            $chapters[] = $chapter;
+            $chapters[] = $chapter->hydrate($elements);
         }
 
         return $chapters;
