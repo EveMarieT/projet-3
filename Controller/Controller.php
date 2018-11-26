@@ -298,6 +298,23 @@ class Controller
         header('location:index.php?action=homePage');
     }
 
+    public function delAlert()
+    {
+        // 1. Il faut récupérer via l'url l'identifiant du commentaire à signaler
+        // 2. On récupère le commentaire associé à l'identifiant (manager : getComFromId($id))
+        // 3. On met à jour le nombre de signalement du commentaire (manager : updateComAlert($val))
+        // 4. Rediriger l'utilisateur vers la page du chapitre lié au commentaire
+
+
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $managerCm = new CommentManager();
+            $delAlert = $managerCm->editComAlert($id);
+        }
+
+        header('location:index.php?action=comments');
+    }
+
     public function updatePassword()
     {
         if (isset($_SESSION['admin'])) {

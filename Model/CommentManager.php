@@ -72,6 +72,15 @@ class CommentManager extends Manager
 
     $req->execute(array('id' => $id));
   }
+
+    public function editComAlert($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare("UPDATE comments SET alert = null WHERE id= :id");
+
+        $req->execute(array('id' => $id));
+    }
+
     public function delete($id)
     {
         $bdd = $this->dbConnect();

@@ -98,6 +98,10 @@ try{
             $controller->comments();
             break;
 
+        case 'delAlert':
+            $controller->delAlert();
+            break;
+
         default:
             $controller->get404();
             break;
