@@ -39,14 +39,12 @@ body {
 h1 {
     font-family: Clicker Script, serif;
     color: white;
-}
-
-h1 {
     font-size: 3.5em;
     padding-top: 15px;
     padding-left: 35px;
     display: inline;
 }
+
 #title-header h2{
 
     margin-bottom: 5px;
@@ -55,7 +53,6 @@ h1 {
 footer {
     background-color: #8db877;
     border-radius: 20px;
-    position: relative;
 }
 
 .bg-light {

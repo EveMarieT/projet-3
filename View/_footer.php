@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer font-small teal pt-4 fixed-bottom">
+<footer class="page-footer font-small teal pt-4">
 
 
     <!-- Grid row -->

@@ -7,18 +7,17 @@
             <div class="card-deck row">
                 <?php foreach ($listPosts as $post): ?>
                     <div class="card col-sm-6">
-                        <img class="card-img-top" src="<?= $post->getPicture(); ?>"
+                        <img class="card-img-top img-fluid" src="<?= $post->getPicture(); ?>"
                              alt="Alaska" title="<?= $post->getTitle(); ?>">
-                        <div class="card-body">
                             <h5 class="card-title"><?= $post->getTitle(); ?></h5>
                             <p class="card-text"><?= substr($post->getContents(), 0, 250); ?></p>
                             <a href="index.php?action=chapter&id=<?= $post->getId(); ?>" class="btn btn-primary">Lire la
                                 suite</a>
-                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
+
         <div class="col-md-6">
             <div class="card mx-auto">
                 <img class="card-img-top" src="Assets/images/jean.jpg" alt="Card image">

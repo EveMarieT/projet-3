@@ -6,7 +6,7 @@
         <?php foreach ($chapters as $chapter):?>
             <div class="card-deck col-sm-4">
                 <div class="card">
-                    <img class="card-img-top" src="<?= $chapter->getPicture();?>" class="img-responsive" alt="Alaska" title="<?= $chapter->getTitle();?>">
+                    <img class="card-img-top img-fluid" src="<?= $chapter->getPicture();?>" class="img-responsive" alt="Alaska" title="<?= $chapter->getTitle();?>">
                     <div class="card-body">
                         <h5 class="card-title"><?= $chapter->getTitle();?></h5>
                         <p class="card-text"><?= substr($chapter->getContents(),0,250);?></p>
