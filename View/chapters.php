@@ -1,6 +1,8 @@
 <?php require('template.php'); ?>
 <?php require('_header.php');?>
 
+
+
 <div class="contenu">
     <div class="title">
         <input class="form-control form-control-lg-success" type="text" placeholder="<?= $chapter['chapter_number'];?> - <?= $chapter['title'];?>">
@@ -30,7 +32,9 @@
 
 </section>
 
+
 <div class="comments">
+
     <h2>Commentaires</h2>
 
     <?php foreach ($comments as $comment):?>
@@ -57,6 +61,8 @@
 
     <?php endforeach;?>
 </div>
+
+
 
 <?php require('_footer.php');?>
 

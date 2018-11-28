@@ -241,12 +241,13 @@ class Controller
     {
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            $title = $_POST['title'];
             $chapter_number = $_POST['chapter_number'];
+            $title = $_POST['title'];
             $contents = $_POST['contents'];
+            $picture = $_POST['picture'];
 
             $manager = new ChapterManager();
-            $manager->updateChapter($id, $title, $chapter_number, $contents);
+            $manager->updateChapter($id, $chapter_number, $title, $contents, $picture);
         }
         header('location:index.php?action=admin');
     }
@@ -335,7 +336,7 @@ class Controller
                     //        ---- mettre à jour mdp
                     $userManager->updateUserPassword($_SESSION['admin'], $newMdp);
 
-                    $msg = "Le changement de votre mot de passe est validé ";
+                    $msg = "Le changement de votre mot de passe est validé";
 
                 }else{
 

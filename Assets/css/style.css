@@ -97,6 +97,13 @@ footer {
     margin-bottom: 10px;
 }
 
+.card-body {
+    background-color: #FFFBD4;
+    font-family: "American Typewriter", serif;
+    font-size: 1.2em;
+}
+
+
 
 
 

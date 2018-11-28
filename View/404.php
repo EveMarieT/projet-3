@@ -8,3 +8,4 @@
 </div>
 
 
+<?php require('_footer.php'); ?>

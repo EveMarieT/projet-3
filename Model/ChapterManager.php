@@ -92,15 +92,16 @@ class ChapterManager extends Manager
      * @param  string $contents correspond au contenu du chapitre à mettre à jour
      * @return string    un tableau associatif des éléments à mettre à jour
      */
-    public function updateChapter($id, $title, $chapter_number, $contents)
+    public function updateChapter($id, $chapter_number, $title, $contents, $picture)
     {
         $db = $this->dbConnect();
-        $query = "UPDATE novel SET chapter_number = :chapter_number, title = :title, contents = :contents WHERE id = :id";
+        $query = "UPDATE novel SET id = :id, chapter_number = :chapter_number, title = :title, contents = :contents, picture = :picture WHERE id = :id";
         $req = $db->prepare($query);
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         $req->bindValue(':chapter_number', $chapter_number, PDO::PARAM_STR);
         $req->bindValue(':title', $title, PDO::PARAM_STR);
         $req->bindValue(':contents', $contents, PDO::PARAM_STR);
+        $req->bindValue(':picture', $picture, PDO::PARAM_STR).
         $req->execute();
     }
 

@@ -1,8 +1,12 @@
 <?php require_once ('View/template.php'); ?>
 <?php require_once ('View/_headerA.php');?>
 
+<div class="card">
+    <div class="card-body">
+        Modifier chapitre
+    </div>
+</div>
 
-<h6>Modifier chapitre</h6>
 
 <form action="index.php?action=update&id=<?= $chapter['id']; ?>" method="post">
 
@@ -18,7 +22,7 @@
     </div>
     <div class="form-group">
         <label for="text">Modifier la photo :</label>
-        <input type="text" class="form-control col-md-6" name="picture" value="<?= $chapter['picture'];?>">
+        <input required type="text" class="form-control col-md-6" name="picture" value="<?= $chapter['picture'];?>">
     </div>
     <br/>
     <div class="form-group">

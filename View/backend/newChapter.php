@@ -1,18 +1,21 @@
 <?php require_once ('View/template.php'); ?>
 <?php require_once ('View/_headerA.php');?>
 
-<h6>Ajouter chapitre</h6>
-<br />
+<div class="card">
+    <div class="card-body">
+        Ajouter chapitre
+    </div>
+</div>
 <form action="index.php?action=addChapter" method="post">
 
     <label> N° du chapitre :</label><br />
-    <input type="text" name="chapter_number" placeholder="Numéro"/><br />
+    <input required type="text" name="chapter_number" placeholder="Numéro"/><br />
     <label>Titre du chapitre :</label><br />
     <input type="text" class="col-md-4" name="title" />
     <br />
     <br />
     <label>Ajout photo :</label><br />
-    <input type="text" class="form-control col-md-6" name="picture">
+    <input required type="text" class="form-control col-md-6" name="picture">
 
     <br />
     <br />

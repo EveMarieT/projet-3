@@ -1,13 +1,14 @@
 <?php require_once ('View/template.php');?>
 <?php require_once ('View/_headerA.php');?>
 
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Tableau de bord -
-            <?php if(date('G') >= 0 && date('G') < 18) { echo 'Bonjour ' .$_SESSION['admin'];
-            } else { echo 'Bonsoir ' .$_SESSION['admin']; } ?></li>
-    </ol>
-</nav>
+
+<div class="card">
+    <div class="card-body">
+        Tableau de bord -
+        <?php if(date('G') >= 0 && date('G') < 18) { echo 'Bonjour ' .$_SESSION['admin'];
+        } else { echo 'Bonsoir ' .$_SESSION['admin']; } ?>
+    </div>
+</div>
 
 <!-- afficher les commentaires -->
 
