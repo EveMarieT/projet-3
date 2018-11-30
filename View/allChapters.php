@@ -9,7 +9,7 @@
                     <img class="card-img-top img-fluid" src="<?= $chapter->getPicture();?>" class="img-responsive" alt="Alaska" title="<?= $chapter->getTitle();?>">
                     <div class="card-body">
                         <h5 class="card-title"><?= $chapter->getTitle();?></h5>
-                        <p class="card-text"><?= substr($chapter->getContents(),0,250);?></p>
+                        <p class="card-text"><?= substr(strip_tags($chapter->getContents()),0,250);?></p>
                         <a href="index.php?action=chapter&id=<?= $chapter->getId();?>" class="btn btn-primary">Lire la suite</a>
                     </div>
                 </div>

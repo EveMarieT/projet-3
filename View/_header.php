@@ -12,4 +12,4 @@
         <?php require_once('_nav.php');?>
     </div>
 </header>
-<div class="container-fluid">
+<div class="container-fluid" style="min-height: 60vh;">

@@ -10,6 +10,17 @@ require_once('Model/UserManager.php');
  */
 class Controller
 {
+
+
+    private function checkAdmin(){
+        //if( on n'est pas admin)
+        /// rediriger vers connexion
+        ///
+        ///
+        ///
+    }
+
+
     /**
      * Permet d'afficher tous les chapitres existants
      * @return void affiche sur la page concernée l'ensemble des chapitres
@@ -167,6 +178,8 @@ class Controller
      */
     public function adminEnter()
     {
+        $this->checkAdmin();
+
         if (isset($_SESSION['admin'])) {
             // affiche toutes les entrées
             // faire une requete dans la bdd pour récupérer les articles

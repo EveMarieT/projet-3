@@ -7,7 +7,9 @@
     <div class="title">
         <input class="form-control form-control-lg-success" type="text" placeholder="<?= $chapter['chapter_number'];?> - <?= $chapter['title'];?>">
     </div>
-    <img src="<?= $chapter['picture'];?>" class="img-thumbnail rounded float-left img-fluid"  alt="Responsive image" title="<?= $chapter['title'];?>" />
+    <?php if( !empty($chapter['picture'])): ?>
+    <img src="<?= $chapter['picture'];?>" class="mx-4 img-thumbnail rounded float-left img-fluid"  alt="Responsive image" title="<?= $chapter['title'];?>" />
+    <?php endif; ?>
     <article>
         <div class="story">
             <p><?= $chapter['contents'];?></p>
