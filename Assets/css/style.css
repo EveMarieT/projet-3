@@ -2,6 +2,7 @@
 
 body {
     background-color: #FFFBD4;
+    /*line-height: 1;*/
 }
 
 .header{
@@ -54,13 +55,20 @@ footer {
     background-color: #8db877;
     border-radius: 20px;
     padding-top: 15px;
+    margin-top: 10px;
 }
 
 .bg-light {
     background-color: transparent !important;
 
 }
+.nav-link:hover {
+    color: white !important;
+}
 
+.navbar-brand:hover{
+    color: white !important;
+}
 .navbar-light .navbar-brand {
     font-family: Clicker Script, serif;
     color: white;
@@ -69,14 +77,16 @@ footer {
 
 .navbar-light .navbar-nav .active>.nav-link {
     font-family: Clicker Script, serif;
-    color: white;
+    color: white !important;
     font-size: 1.5em;
+    display: block;
 }
 
 .navbar-light .navbar-nav .nav-link {
     font-family: Clicker Script, serif;
     color: white;
     font-size: 1.5em;
+    line-height: 1;
 }
 .card-deck {
     margin-top: 15px;

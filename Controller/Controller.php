@@ -10,14 +10,13 @@ require_once('Model/UserManager.php');
  */
 class Controller
 {
-
-
     private function checkAdmin(){
         //if( on n'est pas admin)
-        /// rediriger vers connexion
-        ///
-        ///
-        ///
+        //rediriger vers connexion
+         if (!isset($_SESSION['admin'])) {
+
+            header('location:index.php?action=connexion');
+        }
     }
 
 
@@ -101,6 +100,7 @@ class Controller
 
     public function delCom()
     {
+        $this->checkAdmin();
         if (isset($_GET['id'])) {
             $del = $_GET['id'];
             $managerCm = new CommentManager();
@@ -180,16 +180,16 @@ class Controller
     {
         $this->checkAdmin();
 
-        if (isset($_SESSION['admin'])) {
+//        if (isset($_SESSION['admin'])) {
             // affiche toutes les entrées
             // faire une requete dans la bdd pour récupérer les articles
             // j'appelle la methode qui me permet de récupérer les articles voulus
             $manager = new ChapterManager();
             $lastArticles = $manager->getAllChapters();
             // permet l'ajout d'un nouvel article
-        } else {
-            throw new Exception("Vous n'avez pas les droits pour acceder à cette page");
-        }
+//        } else {
+//            throw new Exception("Vous n'avez pas les droits pour acceder à cette page");
+//        }
 
         require('View/backend/admin.php');
     }
@@ -201,6 +201,7 @@ class Controller
      */
     public function newChapter()
     {
+        $this->checkAdmin();
         require('View/backend/newChapter.php');
     }
 
@@ -211,6 +212,7 @@ class Controller
      */
     public function addChapter()
     {
+        $this->checkAdmin();
         $chapter_number = $_POST['chapter_number'];
         $title = $_POST['title'];
         $contents = $_POST['contents'];
@@ -231,6 +233,7 @@ class Controller
      */
     public function edit($id)
     {
+        $this->checkAdmin();
         if (isset($_GET['id'])) {
             $manager = new ChapterManager();
             $chapter = $manager->getChapter($id);
@@ -252,6 +255,7 @@ class Controller
      */
     public function update()
     {
+        $this->checkAdmin();
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $chapter_number = $_POST['chapter_number'];
@@ -373,8 +377,9 @@ class Controller
 
     public function comments()
     {
-            $managerCm = new CommentManager();
-            $comments = $managerCm->getAllComments();
+        $this->checkAdmin();
+        $managerCm = new CommentManager();
+        $comments = $managerCm->getAllComments();
 
         require('View/backend/comments.php');
     }
