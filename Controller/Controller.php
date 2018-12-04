@@ -10,9 +10,11 @@ require_once('Model/UserManager.php');
  */
 class Controller
 {
+    /**
+     * Permet de vérifier que l'administrateur n'est pas connecté et de ne pas permettre l'accès au backend
+     * @return void redirige sur la page de connexion
+     */
     private function checkAdmin(){
-        //if( on n'est pas admin)
-        //rediriger vers connexion
          if (!isset($_SESSION['admin'])) {
 
             header('location:index.php?action=connexion');
@@ -21,8 +23,8 @@ class Controller
 
 
     /**
-     * Permet d'afficher tous les chapitres existants
-     * @return void affiche sur la page concernée l'ensemble des chapitres
+     * Permet d'afficher aléatoirement deux chapitres
+     * @return void affiche sur la page d'accueil deux chapitres
      */
     public function home()
     {
@@ -47,6 +49,11 @@ class Controller
 
         require('View/chapters.php');
     }
+
+    /**
+     * Permet d'afficher tous les chapitres existants selon le maximum par page voulu
+     * @return void Affiche l'ensemble des pages affichant tous les chapitres
+     */
     public function allChapters()
     {
         $manager = new ChapterManager();
@@ -98,6 +105,11 @@ class Controller
         }
     }
 
+    /**
+     * Permet à l'administrateur de supprimer un commentaire
+     *
+     * @return void supprime le commentaire selectionné
+     */
     public function delCom()
     {
         $this->checkAdmin();
@@ -131,11 +143,11 @@ class Controller
 
     /**
      * Permet à l'administrateur du blog de se connecter
-     * @return void Redirige vers la page admin
      * @internal param string $pseudo
      * @internal param string $mdp
      * @internal param string $pseudo identifiant de l'administrateur
      * @internal param string $mdp mot de passe associé
+     * @return void Redirige vers la page admin
      */
     public function login()
     {
@@ -172,7 +184,7 @@ class Controller
     }
 
     /**
-     * Permet d'afficher les titres de la totalité des chapitres
+     * Permet d'afficher la liste des chapitres existants
      *
      * @return void Affiche la page admin du blog
      */
@@ -180,16 +192,8 @@ class Controller
     {
         $this->checkAdmin();
 
-//        if (isset($_SESSION['admin'])) {
-            // affiche toutes les entrées
-            // faire une requete dans la bdd pour récupérer les articles
-            // j'appelle la methode qui me permet de récupérer les articles voulus
-            $manager = new ChapterManager();
-            $lastArticles = $manager->getAllChapters();
-            // permet l'ajout d'un nouvel article
-//        } else {
-//            throw new Exception("Vous n'avez pas les droits pour acceder à cette page");
-//        }
+        $manager = new ChapterManager();
+        $lastArticles = $manager->getAllChapters();
 
         require('View/backend/admin.php');
     }
@@ -316,13 +320,14 @@ class Controller
         header('location:index.php?action=homePage');
     }
 
+    /**
+     * Permet de supprimer le(s) signalement(s) du commentaire selectionné
+     *
+     * @param integer $id [correspond à l'id du commentaire selectionné]
+     * @return void Redirige vers la page listant l'ensemble des commentaires
+     */
     public function delAlert()
     {
-        // 1. Il faut récupérer via l'url l'identifiant du commentaire à signaler
-        // 2. On récupère le commentaire associé à l'identifiant (manager : getComFromId($id))
-        // 3. On met à jour le nombre de signalement du commentaire (manager : updateComAlert($val))
-        // 4. Rediriger l'utilisateur vers la page du chapitre lié au commentaire
-
 
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -333,6 +338,15 @@ class Controller
         header('location:index.php?action=comments');
     }
 
+    /**
+     * Permet de modifier le mot de passe de l'administrateur
+     *
+     * @param string $currentMdp [correspond au mot de passe actuel)
+     * @param string $newMdp [correspond au nouveau mot de passe]
+     * @param string $confirmedNewPassword [correspond à la confirmation du nouveau mot de passe]
+     *
+     * @return void enregistre le nouveau mot de passe
+     */
     public function updatePassword()
     {
         if (isset($_SESSION['admin'])) {
@@ -370,11 +384,19 @@ class Controller
         require('View/backend/updatePassword.php');
     }
 
+    /**
+     * Permet d'afficher la page contact
+     * @return void Redirige vers la page contact
+     */
     public function getContact()
     {
         require('View/contact.php');
     }
 
+    /**
+     * Permet d'afficher la liste des commentaires
+     * @return void affiche les commentaires en backend
+     */
     public function comments()
     {
         $this->checkAdmin();

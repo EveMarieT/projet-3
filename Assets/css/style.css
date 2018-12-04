@@ -17,7 +17,7 @@ body {
 .headerA, #bandeau {
     background: url('../images/glacier.jpg') no-repeat;
     background-size: cover;
-    max-height: 300px;
+    max-height: 300px !important;
     width: 100%;
     border-radius: 15px;
     padding-top: 5px;
@@ -25,6 +25,7 @@ body {
 }
 
 .breadcrumb, .breadcrumb-item a {
+    position: absolute;
     background-color: transparent !important;
     font-family: "American Typewriter", serif;
     color: white;
