@@ -43,7 +43,7 @@ try{
             break;
 
         case 'delCom':
-            $controller->delCom($_GET['id']);
+            $controller->delCom();
             break;
 
         case 'connexion':
@@ -107,7 +107,7 @@ try{
             break;
     }
 }catch(Exception $e){
-    echo $e->getMessage();
+    $controller->getError($e->getMessage());
 }
 
 

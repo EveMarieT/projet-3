@@ -16,7 +16,6 @@ class Controller
      */
     private function checkAdmin(){
          if (!isset($_SESSION['admin'])) {
-
             header('location:index.php?action=connexion');
         }
     }
@@ -117,6 +116,8 @@ class Controller
             $del = $_GET['id'];
             $managerCm = new CommentManager();
             $managerCm->delete($del);
+        }else{
+            throw  new Exception('Id du commentaire manquant');
         }
         header('location:index.php?action=admin');
     }
@@ -404,5 +405,12 @@ class Controller
         $comments = $managerCm->getAllComments();
 
         require('View/backend/comments.php');
+    }
+
+    public function getError($message)
+    {
+
+        require('View/error.php');
+
     }
 }

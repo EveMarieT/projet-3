@@ -37,6 +37,14 @@ class Comment
    */
   private $alert;
 
+    /**
+     *
+     * Hydrate est une fonction qui prend un tableau associatif (clé/valeur),
+     * parcours ce tableau et appelle le setter associé à une "clé" s'il existe avec la "valeur" en parametre
+     * @param $data
+     * @return $this
+     */
+
     public function hydrate($comments)
     {
         foreach ($comments as $key => $comment) // Parcourir le tableau avec pour clé $key et pour valeur $comment
@@ -140,9 +148,5 @@ class Comment
   public function setAlert($alert){
     $this->alert = $alert;
   }
-  /**
-   * La fonction hydrate permet d'assigner aux attributs automatiquement les valeurs correspondantes
-   *
-   */
 
 }
