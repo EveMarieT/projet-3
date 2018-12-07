@@ -1,6 +1,5 @@
 <?php
-ini_set('display_errors','on');
-error_reporting(E_ALL);
+namespace App\Model;
 
 require_once('Comment.php');
 require_once('Manager.php');
@@ -16,7 +15,7 @@ class CommentManager extends Manager
   {
     $db = $this->dbConnect();
     $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %H:%m\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
-    $req->bindValue(1, $postId, PDO::PARAM_INT);
+    $req->bindValue(1, $postId, \PDO::PARAM_INT);
     $req->execute(array($postId));
 
     return $req;
@@ -86,7 +85,7 @@ class CommentManager extends Manager
         $bdd = $this->dbConnect();
         $query = "DELETE FROM comments WHERE id = :id";
         $req = $bdd->prepare($query);
-        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
 
         return $req;

@@ -1,6 +1,6 @@
 <?php
-ini_set('display_errors', 'on');
-error_reporting(E_ALL);
+
+namespace App\Model;
 
 include_once('Chapter.php');
 require_once('Manager.php');
@@ -41,12 +41,12 @@ class ChapterManager extends Manager
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id, picture, chapter_number, title, contents FROM novel WHERE id = :id');
-        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
         $chapter = $req->fetch();
 
         if (!$chapter) {
-            throw new Exception("Ce chapitre n'existe pas");
+            throw new \Exception("Ce chapitre n'existe pas");
         }
 
         return $chapter;
@@ -97,11 +97,11 @@ class ChapterManager extends Manager
         $db = $this->dbConnect();
         $query = "UPDATE novel SET id = :id, chapter_number = :chapter_number, title = :title, contents = :contents, picture = :picture WHERE id = :id";
         $req = $db->prepare($query);
-        $req->bindValue(':id', $id, PDO::PARAM_INT);
-        $req->bindValue(':chapter_number', $chapter_number, PDO::PARAM_STR);
-        $req->bindValue(':title', $title, PDO::PARAM_STR);
-        $req->bindValue(':contents', $contents, PDO::PARAM_STR);
-        $req->bindValue(':picture', $picture, PDO::PARAM_STR).
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->bindValue(':chapter_number', $chapter_number, \PDO::PARAM_STR);
+        $req->bindValue(':title', $title, \PDO::PARAM_STR);
+        $req->bindValue(':contents', $contents, \PDO::PARAM_STR);
+        $req->bindValue(':picture', $picture, \PDO::PARAM_STR).
         $req->execute();
     }
 
@@ -116,7 +116,7 @@ class ChapterManager extends Manager
         $db = $this->dbConnect();
         $query = "DELETE FROM novel WHERE id = :id";
         $req = $db->prepare($query);
-        $req->bindValue(':id', $id, PDO::PARAM_INT);
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute();
 
         return $req;
@@ -145,8 +145,8 @@ class ChapterManager extends Manager
 
         $db = $this->dbConnect(); // connexion à la bdd
         $req = $db->prepare('SELECT * FROM novel LIMIT :limit OFFSET :offset'); // récupérer tous les articles
-        $req->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
-        $req->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+        $req->bindValue(':limit', (int)$limit, \PDO::PARAM_INT);
+        $req->bindValue(':offset', (int)$offset, \PDO::PARAM_INT);
         $req->execute();
         $data = $req->fetchAll();
         foreach ($data as $elements) {

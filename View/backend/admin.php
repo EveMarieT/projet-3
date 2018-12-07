@@ -55,6 +55,8 @@
 
 </caption>
 
+<?php require('View/_footer.php'); ?>
+
 
 
 

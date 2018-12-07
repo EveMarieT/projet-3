@@ -2,7 +2,6 @@
 
 body {
     background-color: #FFFBD4;
-    /*line-height: 1;*/
 }
 
 .header{
@@ -24,12 +23,30 @@ body {
     margin-bottom: 10px;
 }
 
+
 .breadcrumb, .breadcrumb-item a {
     background-color: transparent !important;
     font-family: "American Typewriter", serif;
     color: white;
     font-size: 1em;
     margin-bottom: 10px;
+
+}
+
+#menuA a {
+    color: white;
+    text-decoration: none;
+
+}
+.navbar-toggler-icon  .navbar-toggler .navbar-toggler .navbar-expand-lg {
+    float: right;
+
+}
+
+#navbarToggleExternalContent a {
+    font-family: "American Typewriter", serif;
+    font-size: 0.8em;
+
 }
 
 .logo {
@@ -87,7 +104,7 @@ footer {
     font-family: Clicker Script, serif;
     color: white;
     font-size: 1.5em;
-    line-height: 1;
+    line-height: 0.3;
 }
 .card-deck {
     margin-top: 15px;
@@ -112,7 +129,10 @@ footer {
     font-size: 1.2em;
 }
 
+.btn .btn-primary {
+    margin-bottom: 3em;
 
+}
 
 
 

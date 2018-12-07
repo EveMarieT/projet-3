@@ -35,5 +35,6 @@
     <input class="btn btn-info" type="submit" value="Valider">
 </form>
 
+<?php require('View/_footer.php'); ?>
 
 

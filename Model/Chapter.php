@@ -1,4 +1,6 @@
 <?php
+
+namespace App\Model;
 // class Chapter
 require_once('Manager.php');
 /**

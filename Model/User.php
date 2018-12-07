@@ -1,4 +1,5 @@
 <?php
+namespace App\Model;
 /**
  * Created by PhpStorm.
  * User: EveMarieThomasse

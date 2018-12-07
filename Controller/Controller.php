@@ -1,9 +1,11 @@
 <?php
+namespace App\Controller;
 
+use App\Model\ChapterManager;
+use App\Model\Comment;
+use App\Model\CommentManager;
+use App\Model\UserManager;
 
-require_once('Model/ChapterManager.php');
-require_once('Model/CommentManager.php');
-require_once('Model/UserManager.php');
 
 /**
  * Class Controller

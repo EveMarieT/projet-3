@@ -1,4 +1,9 @@
 <?php
+
+namespace App;
+
+use App\Controller\Controller;
+
 session_start();
 ini_set('display_errors','on');
 error_reporting(E_ALL);
@@ -10,7 +15,17 @@ function debug($var, $with_die = true){
     if($with_die) die();
 }
 
-include_once('Controller/Controller.php');
+spl_autoload_register(function($class){
+    $file = str_replace('App\\', '', $class);
+    $file = str_replace('\\', '/', $file);
+    $file .= ".php";
+    if(file_exists($file))
+    {
+        require_once $file;
+    }
+});
+
+
 
 // 3 roles pour le routeur:
 // - associer la request à un controlleur existant
@@ -75,11 +90,11 @@ try{
             break;
 
         case 'update':
-            $controller->update($_GET['id']);
+            $controller->update();
             break;
 
         case 'delete':
-            $controller->delChapter($_GET['id']);
+            $controller->delChapter();
             break;
 
         case 'contact':
@@ -106,7 +121,7 @@ try{
             $controller->get404();
             break;
     }
-}catch(Exception $e){
+}catch(\Exception $e){
     $controller->getError($e->getMessage());
 }
 

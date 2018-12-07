@@ -1,4 +1,5 @@
 <?php
+namespace App\Model;
 /**
  * Created by PhpStorm.
  * User: EveMarieThomasse
@@ -30,8 +31,8 @@ class UserManager extends  Manager
         // Associer le $new à $name
         $db = $this->dbConnect();
         $req = $db->prepare('UPDATE users SET password = :password WHERE name= :name');
-        $req->bindValue(':password',password_hash($mdp,PASSWORD_BCRYPT), PDO::PARAM_STR);
-        $req->bindValue(':name', $name, PDO::PARAM_STR);
+        $req->bindValue(':password',password_hash($mdp,PASSWORD_BCRYPT), \PDO::PARAM_STR);
+        $req->bindValue(':name', $name, \PDO::PARAM_STR);
         $req->execute();
 
     }
@@ -40,12 +41,12 @@ class UserManager extends  Manager
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT * FROM users WHERE name = :name');
-        $req->bindValue(':name', $name, PDO::PARAM_STR);
+        $req->bindValue(':name', $name, \PDO::PARAM_STR);
         $req->execute();
         $user = $req->fetch();
 
         if(!$user){
-            throw new Exception("Cet utilisateur n'existe pas");
+            throw new \Exception("Cet utilisateur n'existe pas");
         }
 
         return $user;
