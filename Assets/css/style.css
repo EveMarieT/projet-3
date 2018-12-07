@@ -134,5 +134,28 @@ footer {
 
 }
 
+.page-item .page-link {
+    background-color: #FFFBD4;
+    margin-top: 10px;
+}
 
+.pagination .justify-content-center .page-item .page-link {
+    margin-top: 10px;
+}
 
+.btn-light:hover {
+    color: #8db877;
+    background-color: #FFFBD4;
+    border-color: #FFFBD4;
+}
+
+.btn-light a {
+    color: #8db877;
+    background-color: #FFFBD4;
+    border-color: #FFFBD4;
+    text-decoration: none;
+}
+
+.btn-light {
+    background-color: #FFFBD4;
+}

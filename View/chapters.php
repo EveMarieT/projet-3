@@ -16,6 +16,11 @@
         </div>
     </article>
 </div>
+<button type="button" class="btn btn-light btn-lg btn-block"><a href="index.php?action=allChapters" role="button" aria-pressed="true">Retour aux chapitres</a></button>
+
+
+
+
 
 <section id="comment" class="letComment">
     <h3>Laissez un commentaire</h3>
