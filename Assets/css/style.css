@@ -23,30 +23,26 @@ body {
     margin-bottom: 10px;
 }
 
-
 .breadcrumb, .breadcrumb-item a {
     background-color: transparent !important;
     font-family: "American Typewriter", serif;
     color: white;
-    font-size: 1em;
+    font-size: 0.7em;
     margin-bottom: 10px;
-
 }
 
 #menuA a {
     color: white;
     text-decoration: none;
-
 }
+
 .navbar-toggler-icon  .navbar-toggler .navbar-toggler .navbar-expand-lg {
     float: right;
-
 }
 
 #navbarToggleExternalContent a {
     font-family: "American Typewriter", serif;
     font-size: 0.8em;
-
 }
 
 .logo {
@@ -65,7 +61,6 @@ h1 {
 }
 
 #title-header h2{
-
     margin-bottom: 5px;
 }
 
@@ -78,8 +73,8 @@ footer {
 
 .bg-light {
     background-color: transparent !important;
-
 }
+
 .nav-link:hover {
     color: white !important;
 }
@@ -87,6 +82,7 @@ footer {
 .navbar-brand:hover{
     color: white !important;
 }
+
 .navbar-light .navbar-brand {
     font-family: Clicker Script, serif;
     color: white;
@@ -106,6 +102,7 @@ footer {
     font-size: 1.5em;
     line-height: 0.3;
 }
+
 .card-deck {
     margin-top: 15px;
 }
@@ -131,7 +128,6 @@ footer {
 
 .btn .btn-primary {
     margin-bottom: 3em;
-
 }
 
 .page-item .page-link {

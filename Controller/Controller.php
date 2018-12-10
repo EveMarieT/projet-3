@@ -22,7 +22,6 @@ class Controller
         }
     }
 
-
     /**
      * Permet d'afficher aléatoirement deux chapitres
      * @return void affiche sur la page d'accueil deux chapitres
@@ -87,8 +86,8 @@ class Controller
     {
         $post_id = intval($_GET['id']);
 
-        if (!isset($_POST['author']) || empty($_POST['author'])) throw new Exception("Vous devez saisir un pseudo");
-        if (!isset($_POST['comment']) || strlen($_POST['comment']) < Comment::MIN_LENGHT) throw new Exception("Vous devez saisir un commentaire");
+        if (!isset($_POST['author']) || empty($_POST['author'])) throw new \Exception("Vous devez saisir un pseudo");
+        if (!isset($_POST['comment']) || strlen($_POST['comment']) < Comment::MIN_LENGHT) throw new \Exception("Vous devez saisir un commentaire");
 
 
         $author = $_POST['author'];
@@ -102,7 +101,7 @@ class Controller
 
             header('location:index.php?action=chapter&id=' . $post_id . '#comment');
         } else {
-            echo "Vous n'avez pas rempli les champs obligatoires";
+            throw  new \Exception('Vous n\'avez pas rempli les champs obligatoires');
         }
     }
 
@@ -409,6 +408,11 @@ class Controller
         require('View/backend/comments.php');
     }
 
+    /**
+     * Permet d'afficher un message d'erreur
+     * @param  string $message [correspond au message d'erreur]
+     * @return void Affiche la page avec le message
+     */
     public function getError($message)
     {
 

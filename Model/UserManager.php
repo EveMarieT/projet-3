@@ -7,22 +7,29 @@ namespace App\Model;
  * Time: 15:04
  */
 
-require_once('User.php');
-require_once('Manager.php');
 
 class UserManager extends  Manager
 {
 
+    /**
+     * La fonction permet de vérifier que l'utilisateur a le bon nom et mot de passe
+     * @param $name [correspond au nom de l'utilisateur]
+     * @param $mdp [correspond au mot de passe associé au nom de l'utilisateur]
+     * @return bool vrai si la combinaison est bonne sinon faux
+     */
     public function checkLoginAndPassword($name, $mdp)
     {
-        // Récuperer l'utilisateur ayant pour nom $name
-        // Vérifier que $mdp est ok par rapport à $user['mdp']
-        // Retourner password_verify(.......)
         $user = $this->getUser($name);
         return password_verify($mdp, $user['password']);
 
     }
 
+    /**
+     * La fonction permet de changer de mot de passe
+     * @param $name [correspond au nom de l'utilisateur]
+     * @param $mdp [correspond au nouveau mot de passe de l'utilisateur]
+     * @return string enregistre le changement de mot de passe de l'utilisateur
+     */
     public function updateUserPassword($name,$mdp)
     {
         // Récupérer l'utilisateur ayant pour nom $name
@@ -37,6 +44,12 @@ class UserManager extends  Manager
 
     }
 
+    /**
+     * Permet de récupérer les données de l'utilisateur
+     * @param $name [correspond au nom de l'utilisateur]
+     * @return $user correspond aux données de l'utilisateur
+     * @throws \Exception
+     */
     public function getUser($name)
     {
         $db = $this->dbConnect();

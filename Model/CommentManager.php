@@ -1,15 +1,13 @@
 <?php
 namespace App\Model;
 
-require_once('Comment.php');
-require_once('Manager.php');
 
 class CommentManager extends Manager
 {
   /**
    * Récupère les commentaires associés au chapitre
    * @param  integer $postId correspond à l'id du chapitre
-   * @return          renvoie un tableau avec les éléments du commentaire
+   * @return array renvoie un tableau avec les éléments du commentaire
    */
   public function getComments($postId)
   {
@@ -20,6 +18,11 @@ class CommentManager extends Manager
 
     return $req;
   }
+
+    /**
+     * Récupère tous les commentaires par ordre du nombre de signalement et par id (décroissant)
+     * @return array renvoie un tableau associatif des commentaires
+     */
 
     public function getAllComments()
     {
@@ -39,6 +42,7 @@ class CommentManager extends Manager
    * @param integer $post_id L'id de l'article du commentaire
    * @param string $author  L'auteur du commentaire
    * @param string $comment Le contenu du commentaire
+   * @return void enregistre tous les éléments du commentaire
    */
   public function addComment(int $post_id,string $author,string  $comment)
   {
@@ -46,6 +50,7 @@ class CommentManager extends Manager
     $req = $db->prepare("INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())");
     $newCom = $req->execute(array($post_id, $author, $comment));
   }
+
   /**
    * Signale le commentaire à l'administrateur
    * @param  integer $id correspond à l'id du commentaire
@@ -59,10 +64,11 @@ class CommentManager extends Manager
 
     return $req->fetch();
   }
+
   /**
    * Ajoute la valeur du nombre de signalement du commentaire
-   * @param  int $id aidentifiant du commentaire
-   * @return  renvoie la valeur du nombre de signalement
+   * @param  int $id identifiant du commentaire
+   * @return integer renvoie la valeur du nombre de signalement
    */
   public function updateComAlert($id)
   {
@@ -72,6 +78,11 @@ class CommentManager extends Manager
     $req->execute(array('id' => $id));
   }
 
+    /**
+     * Remet à zéro le nombre de signalement du commentaire
+     * @param int $id  identifiant du commentaire à remettre à zéro
+     * @return int donne la valeur zéro au signalement du commentaire
+     */
     public function editComAlert($id)
     {
         $db = $this->dbConnect();
@@ -80,6 +91,12 @@ class CommentManager extends Manager
         $req->execute(array('id' => $id));
     }
 
+    /**
+     * Permet d'effacer un commentaire selon son id ($id)
+     * @param $id [correspond à l'id du commentaire]
+     * @return void efface le commentaire selectionné
+     *
+     */
     public function delete($id)
     {
         $bdd = $this->dbConnect();

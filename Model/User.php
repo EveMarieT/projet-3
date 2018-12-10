@@ -9,16 +9,29 @@ namespace App\Model;
 
 class User
 {
+    /**
+     * Données utiles pour la création d'un utilisateur
+     *
+     */
 
-
+    /**
+     * @var string correspond à l'email de l'utilisateur
+     */
     private $email;
 
+    /**
+     * @var string correspond au nom de l'utilisateur
+     */
     private $name;
 
+    /**
+     * @var string correspond au mot de passe de l'utilisateur
+     */
     private $password;
 
     /**
-     * @return mixed
+     * La fonction renvoie la valeur de l'attribut $email
+     * @return string retourne l'email de l'utilisateur
      */
     public function getEmail()
     {
@@ -26,7 +39,8 @@ class User
     }
 
     /**
-     * @param mixed $email
+     * La fonction permet de modifier la valeur de l'attribut $email
+     * @param string $email correspond à l'email de l'utilisateur
      */
     public function setEmail($email)
     {
@@ -34,7 +48,8 @@ class User
     }
 
     /**
-     * @return mixed
+     * La fonction renvoie la valeur de l'attribut $name
+     * @return string retourne le nom de l'utilisateur
      */
     public function getName()
     {
@@ -42,7 +57,8 @@ class User
     }
 
     /**
-     * @param mixed $name
+     * la fonction permet de modifier la valeur de l'attribut $name
+     * @return string $name correspondant au nom de l'utilisateur
      */
     public function setName($name)
     {
@@ -50,7 +66,8 @@ class User
     }
 
     /**
-     * @return mixed
+     * la fonction renvoie la valeur de l'attribut $password
+     * @return string $password correspond au mot de passe de l'utilisateur
      */
     public function getPassword()
     {
@@ -58,7 +75,8 @@ class User
     }
 
     /**
-     * @param mixed $password
+     * La fonction permet de modifier la valeur de l'attribut $password
+     * @param string $password correspondant au  mot de passe de l'utilisateur
      */
     public function setPassword($password)
     {

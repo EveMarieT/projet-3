@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Model;
-// class Chapter
-require_once('Manager.php');
+
+
 /**
  * la classe Chapter permet de générer un chapitre
  */

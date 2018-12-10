@@ -2,9 +2,6 @@
 
 namespace App\Model;
 
-include_once('Chapter.php');
-require_once('Manager.php');
-
 /**
  * La class chapterManager permet d'appliquer les méthodes de la class Chapter
  */
@@ -14,8 +11,8 @@ class ChapterManager extends Manager
     const MAX_POST_IN_CHAPTERSPAGE = 3;
 
     /**
-     * La methode getHomeChapters permet de récupérer les 6 premiers chapitres du roman
-     * @return Chapter[]
+     * La methode getHomeChapters permet de récupérer 2 chapitres de manière aléatoire du roman
+     * @return $posts
      */
     public function getHomeChapters()
     {
@@ -52,14 +49,15 @@ class ChapterManager extends Manager
         return $chapter;
     }
 
+
     /**
-     * La méthode getAllChapters permet de récupérer tous les chapitres existants
+     * La méthode getAllChapters permet de récupérer tous les chapitres existants par ordre de n° de chapitre
      * @return string un tableau associatif des chapitres existants
      */
     public function getAllChapters()
     {
         $db = $this->dbConnect(); // connexion à la bdd
-        $req = $db->query('SELECT * FROM novel ORDER BY CAST(chapter_number AS UNSIGNED) ASC'); // récupérer tous les articles
+        $req = $db->query('SELECT * FROM novel ORDER BY CAST(chapter_number AS UNSIGNED) ASC');
         $data = $req->fetchAll();
         foreach ($data as $elements) {
             $lastArticle = new Chapter();
@@ -72,9 +70,10 @@ class ChapterManager extends Manager
     /**
      * la méthode addChapter permet d'ajouter un nouveau chapitre
      * @param string $title correspond au titre du nouveau chapitre
-     * @param integer $chapter_number correpond au numéro du nouveau chapitre
+     * @param integer $chapter_number correspond au numéro du nouveau chapitre
      * @param string $contents correspond au contenu du nouveau chapitre
-     * @param file $picture correspond à la photo du nouveau chapitre
+     * @param string $picture correspond à la photo du nouveau chapitre
+     * @return void ajoute un nouveau chapitre
      */
     public function addChapter($chapter_number, $title, $contents, $picture)
     {
@@ -124,6 +123,7 @@ class ChapterManager extends Manager
 
     /**
      * Compte le nombre de chapitres dans la base
+     * @return
      */
     public function countAll()
     {
@@ -136,6 +136,7 @@ class ChapterManager extends Manager
 
 
     /**
+     * Permet de récupérer le nombre max de chapitre par page
      * @param $page
      */
     public function paging($page)
@@ -143,8 +144,8 @@ class ChapterManager extends Manager
         $limit = self::MAX_POST_IN_CHAPTERSPAGE;
         $offset = ($page - 1) * self::MAX_POST_IN_CHAPTERSPAGE;
 
-        $db = $this->dbConnect(); // connexion à la bdd
-        $req = $db->prepare('SELECT * FROM novel LIMIT :limit OFFSET :offset'); // récupérer tous les articles
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM novel LIMIT :limit OFFSET :offset');
         $req->bindValue(':limit', (int)$limit, \PDO::PARAM_INT);
         $req->bindValue(':offset', (int)$offset, \PDO::PARAM_INT);
         $req->execute();

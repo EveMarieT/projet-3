@@ -1,7 +1,6 @@
 <?php
 namespace App\Model;
-// class Comment
-require_once('Manager.php');
+
 /**
  * Cette classe permet de générer un commentaire
  */

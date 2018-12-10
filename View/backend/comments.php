@@ -21,6 +21,7 @@
                 <th scope="col">Auteur</th>
                 <th scope="col">Commentaire :</th>
                 <th scope="col">Nombre de signalement</th>
+                <th scope="col">Action :</th>
                 <th scope="col"></th>
             </tr>
             </thead>
