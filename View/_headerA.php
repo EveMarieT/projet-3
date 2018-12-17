@@ -2,7 +2,7 @@
     <div class="container-fluid">
             <div id="bandeau">
                 <div id="title-headerA">
-                    <h1>Billet simple pour l'Alaska</h1>
+                    <h2>Billet simple pour l'Alaska</h2>
                 </div>
             </div>
         <?php require_once('_navA.php'); ?>

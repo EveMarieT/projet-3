@@ -8,41 +8,9 @@ body {
     background: url('../images/globe.jpg') no-repeat;
     background-size: cover;
     border-radius: 15px;
-    max-height: 300px;
+    /*max-height: 300px;*/
     width: 100%;
     margin-bottom: 10px;
-}
-
-.headerA, #bandeau {
-    background: url('../images/glacier.jpg') no-repeat;
-    background-size: cover;
-    max-height: 300px !important;
-    width: 100%;
-    border-radius: 15px;
-    padding-top: 5px;
-    margin-bottom: 10px;
-}
-
-.breadcrumb, .breadcrumb-item a {
-    background-color: transparent !important;
-    font-family: "American Typewriter", serif;
-    color: white;
-    font-size: 0.7em;
-    margin-bottom: 10px;
-}
-
-#menuA a {
-    color: white;
-    text-decoration: none;
-}
-
-.navbar-toggler-icon  .navbar-toggler .navbar-toggler .navbar-expand-lg {
-    float: right;
-}
-
-#navbarToggleExternalContent a {
-    font-family: "American Typewriter", serif;
-    font-size: 0.8em;
 }
 
 .logo {
@@ -64,25 +32,6 @@ h1 {
     margin-bottom: 5px;
 }
 
-footer {
-    background-color: #8db877;
-    border-radius: 20px;
-    padding-top: 15px;
-    margin-top: 10px;
-}
-
-.bg-light {
-    background-color: transparent !important;
-}
-
-.nav-link:hover {
-    color: white !important;
-}
-
-.navbar-brand:hover{
-    color: white !important;
-}
-
 .navbar-light .navbar-brand {
     font-family: Clicker Script, serif;
     color: white;
@@ -101,6 +50,58 @@ footer {
     color: white;
     font-size: 1.5em;
     line-height: 0.3;
+}
+
+.headerA, #bandeau {
+    background: url('../images/glacier.jpg') no-repeat;
+    background-size: cover;
+    max-height: 300px !important;
+    width: 100%;
+    border-radius: 15px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+
+#title-headerA h2 {
+    font-family: "American Typewriter", serif;
+    color: white;
+}
+
+#navbarToggleExternalContent a {
+    font-family: "American Typewriter", serif;
+    font-size: 0.8em;
+
+}
+
+.breadcrumb, .breadcrumb-item a {
+    background-color: transparent !important;
+    font-family: "American Typewriter", serif;
+    color: white;
+    font-size: em;
+    margin-bottom: 10px;
+
+}
+
+#menuA a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-toggler-icon  .navbar-toggler .navbar-toggler .navbar-expand-lg {
+    float: right;
+
+}
+
+.nav-link:hover {
+    color: white !important;
+}
+
+.navbar-brand:hover{
+    color: white !important;
+}
+
+.bg-light {
+    background-color: transparent !important;
 }
 
 .card-deck {
@@ -128,6 +129,7 @@ footer {
 
 .btn .btn-primary {
     margin-bottom: 3em;
+
 }
 
 .page-item .page-link {
@@ -154,4 +156,11 @@ footer {
 
 .btn-light {
     background-color: #FFFBD4;
+}
+
+footer {
+    background-color: #8db877;
+    border-radius: 20px;
+    padding-top: 15px;
+    margin-top: 10px;
 }
