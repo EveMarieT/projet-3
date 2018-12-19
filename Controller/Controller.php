@@ -39,8 +39,10 @@ class Controller
      *
      * @return void Affichage de la page avec le chapitre demandé
      */
-    public function chapter(int $id)
+    public function chapter ()
     {
+        $id = intval($_GET['id']);
+
         $manager = new ChapterManager();
         $chapter = $manager->getChapter($id);
 
@@ -120,7 +122,7 @@ class Controller
         }else{
             throw  new Exception('Id du commentaire manquant');
         }
-        header('location:index.php?action=admin');
+        header('location:index.php?action=comments');
     }
 
     /**
@@ -237,9 +239,10 @@ class Controller
      * @param  integer $id [correspond à l'id du chapitre]
      * @return [type]   Redirige vers la page de modification
      */
-    public function edit($id)
+    public function edit()
     {
         $this->checkAdmin();
+        $id = ($_GET['id']);
         if (isset($_GET['id'])) {
             $manager = new ChapterManager();
             $chapter = $manager->getChapter($id);

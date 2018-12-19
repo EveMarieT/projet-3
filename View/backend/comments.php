@@ -32,10 +32,10 @@
                     <td><?= $comment->getAuthor();?></td>
                     <td><?= $comment->getComment();?></td>
                     <td><?= $comment->getAlert();?></td>
-                    <td><a href="index.php?action=delAlert&id=<?= $comment->getId();?>" data-toggle="modal" data-target="#deleteModal">Supprimer signalement</a></td>
-                    <td><a href="index.php?action=delCom&id=<?= $comment->getId();?>" data-toggle="modal" data-target="#deleteModal">Effacer<img src="Assets/images/if_basket_1814090.png"></a></td>
+                    <td><a href="index.php?action=delAlert&id=<?= $comment->getId();?>" data-toggle="modal" data-target="#deleteModal<?= $comment->getId();?>">Supprimer signalement</a></td>
+                    <td><a href="index.php?action=delCom&id=<?= $comment->getId();?>" data-toggle="modal" data-target="#deleteModal<?= $comment->getId();?>">Effacer<img src="Assets/images/if_basket_1814090.png"></a></td>
 
-                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteModal<?= $comment->getId();?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

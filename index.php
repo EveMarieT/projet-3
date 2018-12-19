@@ -46,7 +46,7 @@ try{
             break;
 
         case 'chapter':
-            $controller->chapter(intval($_GET['id']));
+            $controller->chapter();
             break;
 
         case 'allChapters':
@@ -86,7 +86,7 @@ try{
             break;
 
         case 'edit':
-            $controller->edit($_GET['id']);
+            $controller->edit();
             break;
 
         case 'update':
