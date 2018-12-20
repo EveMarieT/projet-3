@@ -27,7 +27,7 @@ class CommentManager extends Manager
     public function getAllComments()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT * FROM comments ORDER BY alert DESC, id DESC');
+        $req = $db->query('SELECT * FROM comments ORDER BY alert DESC, post_id DESC');
         $data = $req->fetchAll();
         foreach ($data as $elements) {
             $comment = new Comment();

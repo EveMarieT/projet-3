@@ -32,7 +32,7 @@
                     <td><?= $comment->getAuthor();?></td>
                     <td><?= $comment->getComment();?></td>
                     <td><?= $comment->getAlert();?></td>
-                    <td><a href="index.php?action=delAlert&id=<?= $comment->getId();?>" data-toggle="modal" data-target="#deleteModal<?= $comment->getId();?>">Supprimer signalement</a></td>
+                    <td><a href="index.php?action=delAlert&id=<?= $comment->getId();?>">Supprimer signalement</a></td>
                     <td><a href="index.php?action=delCom&id=<?= $comment->getId();?>" data-toggle="modal" data-target="#deleteModal<?= $comment->getId();?>">Effacer<img src="Assets/images/if_basket_1814090.png"></a></td>
 
                         <div class="modal fade" id="deleteModal<?= $comment->getId();?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
