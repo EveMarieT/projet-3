@@ -1,0 +1,17 @@
+Détail des corrections apportées suite à la soutenance du 20 décembre 2018
+
+1/ Concernant les espaces dans le pseudo et/ou commentaire laisser par l'utilisateur :
+Suppression des espaces dans le commit "fix suppression des espaces vides autour des champs
+author et comment + contôle de la taille max de l'auteur du commentaire".
+
+2/ Concernant le bug pour la suppression d'un chapitre sélectionné :
+Le chapitre sélectionné est supprimé et non pas le premier chapitre de la liste dans le commit "fix suppression du
+chapitre sélectionné".
+
+3/ Concernant l'optimisation de la bdd :
+Le varchar de l'author du commentaire a été modifié de 250 à 25 et la modification a été intégrée dans le point 1
+
+4/ Concernant la vérification de la suppression des commentaires associés au chapitre :
+En base de données une suppression en cascade est gérée via une contrainte sur la clé étrangère entre les tables
+comment et novel, il y a un on delete cascade; si un chapitre est supprimé les commentaires associés sont supprimés
+également.
