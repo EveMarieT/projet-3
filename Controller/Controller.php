@@ -88,23 +88,21 @@ class Controller
     {
         $post_id = intval($_GET['id']);
 
-        if (!isset($_POST['author']) || empty($_POST['author'])) throw new \Exception("Vous devez saisir un pseudo");
-        if (!isset($_POST['comment']) || strlen($_POST['comment']) < Comment::MIN_LENGHT) throw new \Exception("Vous devez saisir un commentaire");
+        if (!isset($_POST['author']) || strlen(trim($_POST['author'])) < Comment::MAX_AUTHOR_LENGHT) throw new \Exception("Vous devez saisir un pseudo");
+        if (!isset($_POST['comment']) || strlen(trim($_POST['comment'])) < Comment::MIN_COMMENT_LENGHT) throw new \Exception("Vous devez saisir un commentaire");
 
 
-        $author = $_POST['author'];
-        $comment = $_POST['comment'];
+        $author = trim($_POST['author']);
+        $comment = trim($_POST['comment']);
 
-        if (isset($_POST['author'])) {
-            $managerCm = new CommentManager();
-            $author = htmlspecialchars($author);
-            $comment = htmlspecialchars($comment);
-            $newCom = $managerCm->addComment($post_id, $author, $comment);
 
-            header('location:index.php?action=chapter&id=' . $post_id . '#comment');
-        } else {
-            throw  new \Exception('Vous n\'avez pas rempli les champs obligatoires');
-        }
+        $managerCm = new CommentManager();
+        $author = htmlspecialchars($author);
+        $comment = htmlspecialchars($comment);
+        $newCom = $managerCm->addComment($post_id, $author, $comment);
+
+        header('location:index.php?action=chapter&id=' . $post_id . '#comment');
+
     }
 
     /**

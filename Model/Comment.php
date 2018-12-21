@@ -10,7 +10,8 @@ class Comment
    * Données utiles pour la création de commentaire
    *
    */
-    const MIN_LENGHT = 10;
+    const MAX_AUTHOR_LENGHT = 25;
+    const MIN_COMMENT_LENGHT = 10;
 
     /**
    * @var integer correspond à l'id du commentaire
