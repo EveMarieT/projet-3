@@ -28,9 +28,9 @@
                     <th scope="row"><?= $article->getChapterNumber();?></th>
                     <td><a href="index.php?action=chapter&id=<?= $article->getId();?>"><?= $article->getTitle();?></a></td>
                     <td><a href="index.php?action=edit&id=<?= $article->getId();?>">Modifier<img src="Assets/images/if_pen_1814074.png"></a></td>
-                    <td><a href="index.php?action=delete&id=<?= $article->getId();?>" data-toggle="modal" data-target="#deleteModal">Effacer<img src="Assets/images/if_basket_1814090.png"></a>
+                    <td><a href="index.php?action=delete&id=<?= $article->getId();?>" data-toggle="modal" data-target="#deleteModal<?= $article->getId();?>">Effacer<img src="Assets/images/if_basket_1814090.png"></a>
 
-                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deleteModal<?= $article->getId();?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
