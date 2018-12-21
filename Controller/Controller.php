@@ -88,7 +88,7 @@ class Controller
     {
         $post_id = intval($_GET['id']);
 
-        if (!isset($_POST['author']) || strlen(trim($_POST['author'])) < Comment::MAX_AUTHOR_LENGHT) throw new \Exception("Vous devez saisir un pseudo");
+        if (!isset($_POST['author']) || !empty(strlen(trim($_POST['author']))) < Comment::MAX_AUTHOR_LENGHT) throw new \Exception("Vous devez saisir un pseudo");
         if (!isset($_POST['comment']) || strlen(trim($_POST['comment'])) < Comment::MIN_COMMENT_LENGHT) throw new \Exception("Vous devez saisir un commentaire");
 
 
