@@ -51,7 +51,7 @@
             </tbody>
         </table>
     </div>
-        <a href="index.php?action=newChapter"><button>Ajouter un nouveau chapitre</button></a>
+        <a href="index.php?action=newChapter"><button type="button" class="btn btn-secondary">Ajouter un nouveau chapitre</button></a>
 
 </caption>
 
